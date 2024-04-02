@@ -1,0 +1,3 @@
+/home/dtseng/Downloads/research/cook/build/CMakeFiles/executable_cxx.dir
+/home/dtseng/Downloads/research/cook/build/CMakeFiles/edit_cache.dir
+/home/dtseng/Downloads/research/cook/build/CMakeFiles/rebuild_cache.dir
