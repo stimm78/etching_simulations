@@ -1,0 +1,18 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-DBOOST_IOSTREAMS_DYN_LINK",
+      "-DBOOST_IOSTREAMS_NO_LIB",
+      "-DOPENVDB_ABI_VERSION_NUMBER=11",
+      "-DOPENVDB_USE_DELAYED_LOADING",
+      "-c",
+      "-o",
+      "CMakeFiles/Cookbook.dir/cookbook.cpp.o",
+      "/home/dtseng/Downloads/research/cookbook/cookbook.cpp"
+    ],
+    "directory": "/home/dtseng/Downloads/research/cookbook/build",
+    "file": "/home/dtseng/Downloads/research/cookbook/cookbook.cpp",
+    "output": "/home/dtseng/Downloads/research/cookbook/build/CMakeFiles/Cookbook.dir/cookbook.cpp.o"
+  }
+]

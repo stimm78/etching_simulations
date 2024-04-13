@@ -1,0 +1,3 @@
+/home/dtseng/Downloads/research/cookbook/build/CMakeFiles/Cookbook.dir
+/home/dtseng/Downloads/research/cookbook/build/CMakeFiles/edit_cache.dir
+/home/dtseng/Downloads/research/cookbook/build/CMakeFiles/rebuild_cache.dir
