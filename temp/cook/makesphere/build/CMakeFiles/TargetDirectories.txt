@@ -1,0 +1,3 @@
+/home/fyodr/fun_CS_projects/openvdb/cook/makesphere/build/CMakeFiles/executable_cxx.dir
+/home/fyodr/fun_CS_projects/openvdb/cook/makesphere/build/CMakeFiles/edit_cache.dir
+/home/fyodr/fun_CS_projects/openvdb/cook/makesphere/build/CMakeFiles/rebuild_cache.dir

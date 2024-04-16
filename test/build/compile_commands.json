@@ -8,11 +8,11 @@
       "-DOPENVDB_USE_DELAYED_LOADING",
       "-c",
       "-o",
-      "CMakeFiles/Cookbook.dir/cookbook.cpp.o",
-      "/home/dtseng/Downloads/research/cookbook/cookbook.cpp"
+      "CMakeFiles/Test.dir/test.cpp.o",
+      "/home/dtseng/Downloads/research/etching_simulations/test/test.cpp"
     ],
-    "directory": "/home/dtseng/Downloads/research/cookbook/build",
-    "file": "/home/dtseng/Downloads/research/cookbook/cookbook.cpp",
-    "output": "/home/dtseng/Downloads/research/cookbook/build/CMakeFiles/Cookbook.dir/cookbook.cpp.o"
+    "directory": "/home/dtseng/Downloads/research/etching_simulations/test/build",
+    "file": "/home/dtseng/Downloads/research/etching_simulations/test/test.cpp",
+    "output": "/home/dtseng/Downloads/research/etching_simulations/test/build/CMakeFiles/Test.dir/test.cpp.o"
   }
 ]

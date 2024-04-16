@@ -1,0 +1,3 @@
+/home/fyodr/fun_CS_projects/openvdb/cook/gridwrite/build/CMakeFiles/executable_cxx.dir
+/home/fyodr/fun_CS_projects/openvdb/cook/gridwrite/build/CMakeFiles/edit_cache.dir
+/home/fyodr/fun_CS_projects/openvdb/cook/gridwrite/build/CMakeFiles/rebuild_cache.dir

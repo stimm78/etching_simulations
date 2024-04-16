@@ -1,3 +1,0 @@
-/home/fyodr/fun_CS_projects/openvdb/cook/hello/build/CMakeFiles/executable_cxx.dir
-/home/fyodr/fun_CS_projects/openvdb/cook/hello/build/CMakeFiles/edit_cache.dir
-/home/fyodr/fun_CS_projects/openvdb/cook/hello/build/CMakeFiles/rebuild_cache.dir

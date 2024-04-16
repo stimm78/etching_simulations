@@ -1,3 +1,0 @@
-/home/fyodr/fun_CS_projects/openvdb/process/build/CMakeFiles/executable_cxx.dir
-/home/fyodr/fun_CS_projects/openvdb/process/build/CMakeFiles/edit_cache.dir
-/home/fyodr/fun_CS_projects/openvdb/process/build/CMakeFiles/rebuild_cache.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/executable_cxx.dir/cook_makesphere.cxx.o -o executable_cxx  -Wl,-rpath,/usr/local/lib -lopenvdb /usr/local/lib/libtbb.so /usr/local/lib/libtbbmalloc.so 
