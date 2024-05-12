@@ -1,58 +1,59 @@
 CMakeFiles/Cube.dir/cube.cpp.o: \
  /home/dtseng/Downloads/research/etching_simulations/src/cube.cpp \
- /usr/include/stdc-predef.h /usr/local/include/openvdb/Types.h \
+ /usr/include/stdc-predef.h /usr/local/include/openvdb/openvdb.h \
+ /usr/local/include/openvdb/Platform.h /usr/local/include/openvdb/Types.h \
  /usr/local/include/openvdb/version.h \
- /usr/local/include/openvdb/Platform.h /usr/include/c++/13/cstddef \
- /usr/include/c++/13/x86_64-redhat-linux/bits/c++config.h \
+ /usr/local/include/openvdb/Platform.h /usr/include/c++/14/cstddef \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/os_defines.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/bits/timesize.h /usr/include/sys/cdefs.h \
  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
  /usr/include/gnu/stubs-64.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/cpu_defines.h \
- /usr/include/c++/13/pstl/pstl_config.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h \
- /usr/include/c++/13/cstdint \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/cpu_defines.h \
+ /usr/include/c++/14/pstl/pstl_config.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/stddef.h \
+ /usr/include/c++/14/bits/version.h /usr/include/c++/14/cstdint \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/libc-header-start.h \
  /usr/include/bits/types.h /usr/include/bits/typesizes.h \
  /usr/include/bits/time64.h /usr/include/bits/wchar.h \
  /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
- /usr/local/include/openvdb/Platform.h \
- /usr/local/include/openvdb/TypeList.h /usr/include/c++/13/tuple \
- /usr/include/c++/13/bits/stl_pair.h /usr/include/c++/13/type_traits \
- /usr/include/c++/13/bits/move.h /usr/include/c++/13/bits/utility.h \
- /usr/include/c++/13/bits/uses_allocator.h \
- /usr/include/c++/13/bits/invoke.h /usr/local/include/openvdb/math/Half.h \
- /usr/local/include/openvdb/version.h /usr/include/c++/13/iostream \
- /usr/include/c++/13/bits/requires_hosted.h /usr/include/c++/13/ostream \
- /usr/include/c++/13/ios /usr/include/c++/13/iosfwd \
- /usr/include/c++/13/bits/stringfwd.h \
- /usr/include/c++/13/bits/memoryfwd.h /usr/include/c++/13/bits/postypes.h \
- /usr/include/c++/13/cwchar /usr/include/wchar.h \
+ /usr/include/bits/stdint-least.h /usr/local/include/openvdb/TypeList.h \
+ /usr/include/c++/14/tuple /usr/include/c++/14/bits/stl_pair.h \
+ /usr/include/c++/14/type_traits /usr/include/c++/14/bits/move.h \
+ /usr/include/c++/14/bits/utility.h \
+ /usr/include/c++/14/bits/uses_allocator.h \
+ /usr/include/c++/14/bits/invoke.h /usr/local/include/openvdb/math/Half.h \
+ /usr/local/include/openvdb/version.h /usr/include/c++/14/iostream \
+ /usr/include/c++/14/bits/requires_hosted.h /usr/include/c++/14/ostream \
+ /usr/include/c++/14/ios /usr/include/c++/14/iosfwd \
+ /usr/include/c++/14/bits/stringfwd.h \
+ /usr/include/c++/14/bits/memoryfwd.h /usr/include/c++/14/bits/postypes.h \
+ /usr/include/c++/14/cwchar /usr/include/wchar.h \
  /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/stdarg.h \
  /usr/include/bits/types/wint_t.h /usr/include/bits/types/mbstate_t.h \
  /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
  /usr/include/bits/types/FILE.h /usr/include/bits/types/locale_t.h \
- /usr/include/bits/types/__locale_t.h /usr/include/c++/13/exception \
- /usr/include/c++/13/bits/exception.h \
- /usr/include/c++/13/bits/exception_ptr.h \
- /usr/include/c++/13/bits/exception_defines.h \
- /usr/include/c++/13/bits/cxxabi_init_exception.h \
- /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/hash_bytes.h \
- /usr/include/c++/13/new /usr/include/c++/13/bits/nested_exception.h \
- /usr/include/c++/13/bits/char_traits.h \
- /usr/include/c++/13/bits/localefwd.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/c++locale.h \
- /usr/include/c++/13/clocale /usr/include/locale.h \
- /usr/include/bits/locale.h /usr/include/c++/13/cctype \
+ /usr/include/bits/types/__locale_t.h /usr/include/c++/14/exception \
+ /usr/include/c++/14/bits/exception.h \
+ /usr/include/c++/14/bits/exception_ptr.h \
+ /usr/include/c++/14/bits/exception_defines.h \
+ /usr/include/c++/14/bits/cxxabi_init_exception.h \
+ /usr/include/c++/14/typeinfo /usr/include/c++/14/bits/hash_bytes.h \
+ /usr/include/c++/14/new /usr/include/c++/14/bits/nested_exception.h \
+ /usr/include/c++/14/bits/char_traits.h \
+ /usr/include/c++/14/bits/localefwd.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/c++locale.h \
+ /usr/include/c++/14/clocale /usr/include/locale.h \
+ /usr/include/bits/locale.h /usr/include/c++/14/cctype \
  /usr/include/ctype.h /usr/include/bits/endian.h \
- /usr/include/bits/endianness.h /usr/include/c++/13/bits/ios_base.h \
- /usr/include/c++/13/ext/atomicity.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/gthr.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/gthr-default.h \
+ /usr/include/bits/endianness.h /usr/include/c++/14/bits/ios_base.h \
+ /usr/include/c++/14/ext/atomicity.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/gthr.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/gthr-default.h \
  /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/bits/types/time_t.h \
  /usr/include/bits/types/struct_timespec.h /usr/include/bits/sched.h \
@@ -69,174 +70,180 @@ CMakeFiles/Cube.dir/cube.cpp.o: \
  /usr/include/bits/types/__sigset_t.h \
  /usr/include/bits/types/struct___jmp_buf_tag.h \
  /usr/include/bits/pthread_stack_min-dynamic.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/atomic_word.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/atomic_word.h \
  /usr/include/sys/single_threaded.h \
- /usr/include/c++/13/bits/locale_classes.h /usr/include/c++/13/string \
- /usr/include/c++/13/bits/allocator.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/c++allocator.h \
- /usr/include/c++/13/bits/new_allocator.h \
- /usr/include/c++/13/bits/functexcept.h \
- /usr/include/c++/13/bits/cpp_type_traits.h \
- /usr/include/c++/13/bits/ostream_insert.h \
- /usr/include/c++/13/bits/cxxabi_forced.h \
- /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
- /usr/include/c++/13/bits/concept_check.h \
- /usr/include/c++/13/debug/assertions.h \
- /usr/include/c++/13/bits/stl_iterator_base_types.h \
- /usr/include/c++/13/bits/stl_iterator.h \
- /usr/include/c++/13/ext/type_traits.h \
- /usr/include/c++/13/bits/ptr_traits.h \
- /usr/include/c++/13/bits/stl_function.h \
- /usr/include/c++/13/backward/binders.h \
- /usr/include/c++/13/ext/numeric_traits.h \
- /usr/include/c++/13/bits/stl_algobase.h \
- /usr/include/c++/13/debug/debug.h \
- /usr/include/c++/13/bits/predefined_ops.h /usr/include/c++/13/bit \
- /usr/include/c++/13/bits/refwrap.h \
- /usr/include/c++/13/bits/range_access.h \
- /usr/include/c++/13/initializer_list \
- /usr/include/c++/13/bits/basic_string.h \
- /usr/include/c++/13/ext/alloc_traits.h \
- /usr/include/c++/13/bits/alloc_traits.h \
- /usr/include/c++/13/bits/stl_construct.h /usr/include/c++/13/string_view \
- /usr/include/c++/13/bits/functional_hash.h \
- /usr/include/c++/13/bits/string_view.tcc \
- /usr/include/c++/13/ext/string_conversions.h /usr/include/c++/13/cstdlib \
+ /usr/include/c++/14/bits/locale_classes.h /usr/include/c++/14/string \
+ /usr/include/c++/14/bits/allocator.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/c++allocator.h \
+ /usr/include/c++/14/bits/new_allocator.h \
+ /usr/include/c++/14/bits/functexcept.h \
+ /usr/include/c++/14/bits/cpp_type_traits.h \
+ /usr/include/c++/14/bits/ostream_insert.h \
+ /usr/include/c++/14/bits/cxxabi_forced.h \
+ /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
+ /usr/include/c++/14/bits/concept_check.h \
+ /usr/include/c++/14/debug/assertions.h \
+ /usr/include/c++/14/bits/stl_iterator_base_types.h \
+ /usr/include/c++/14/bits/stl_iterator.h \
+ /usr/include/c++/14/ext/type_traits.h \
+ /usr/include/c++/14/bits/ptr_traits.h \
+ /usr/include/c++/14/bits/stl_function.h \
+ /usr/include/c++/14/backward/binders.h \
+ /usr/include/c++/14/ext/numeric_traits.h \
+ /usr/include/c++/14/bits/stl_algobase.h \
+ /usr/include/c++/14/debug/debug.h \
+ /usr/include/c++/14/bits/predefined_ops.h /usr/include/c++/14/bit \
+ /usr/include/c++/14/concepts /usr/include/c++/14/bits/refwrap.h \
+ /usr/include/c++/14/bits/range_access.h \
+ /usr/include/c++/14/initializer_list \
+ /usr/include/c++/14/bits/basic_string.h \
+ /usr/include/c++/14/ext/alloc_traits.h \
+ /usr/include/c++/14/bits/alloc_traits.h \
+ /usr/include/c++/14/bits/stl_construct.h /usr/include/c++/14/string_view \
+ /usr/include/c++/14/bits/functional_hash.h \
+ /usr/include/c++/14/bits/string_view.tcc \
+ /usr/include/c++/14/ext/string_conversions.h /usr/include/c++/14/cstdlib \
  /usr/include/stdlib.h /usr/include/bits/waitflags.h \
  /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
  /usr/include/endian.h /usr/include/bits/byteswap.h \
  /usr/include/bits/uintn-identity.h /usr/include/sys/select.h \
  /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h \
  /usr/include/alloca.h /usr/include/bits/stdlib-float.h \
- /usr/include/c++/13/bits/std_abs.h /usr/include/c++/13/cstdio \
+ /usr/include/c++/14/bits/std_abs.h /usr/include/c++/14/cstdio \
  /usr/include/stdio.h /usr/include/bits/types/__fpos_t.h \
  /usr/include/bits/types/__fpos64_t.h \
  /usr/include/bits/types/struct_FILE.h \
  /usr/include/bits/types/cookie_io_functions_t.h \
- /usr/include/bits/stdio_lim.h /usr/include/c++/13/cerrno \
+ /usr/include/bits/stdio_lim.h /usr/include/c++/14/cerrno \
  /usr/include/errno.h /usr/include/bits/errno.h \
  /usr/include/linux/errno.h /usr/include/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/bits/types/error_t.h /usr/include/c++/13/bits/charconv.h \
- /usr/include/c++/13/bits/basic_string.tcc \
- /usr/include/c++/13/bits/memory_resource.h \
- /usr/include/c++/13/bits/uses_allocator_args.h \
- /usr/include/c++/13/bits/locale_classes.tcc \
- /usr/include/c++/13/system_error \
- /usr/include/c++/13/x86_64-redhat-linux/bits/error_constants.h \
- /usr/include/c++/13/stdexcept /usr/include/c++/13/streambuf \
- /usr/include/c++/13/bits/streambuf.tcc \
- /usr/include/c++/13/bits/basic_ios.h \
- /usr/include/c++/13/bits/locale_facets.h /usr/include/c++/13/cwctype \
+ /usr/include/bits/types/error_t.h /usr/include/c++/14/bits/charconv.h \
+ /usr/include/c++/14/bits/basic_string.tcc \
+ /usr/include/c++/14/bits/memory_resource.h \
+ /usr/include/c++/14/bits/uses_allocator_args.h \
+ /usr/include/c++/14/bits/locale_classes.tcc \
+ /usr/include/c++/14/system_error \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/error_constants.h \
+ /usr/include/c++/14/stdexcept /usr/include/c++/14/streambuf \
+ /usr/include/c++/14/bits/streambuf.tcc \
+ /usr/include/c++/14/bits/basic_ios.h \
+ /usr/include/c++/14/bits/locale_facets.h /usr/include/c++/14/cwctype \
  /usr/include/wctype.h /usr/include/bits/wctype-wchar.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/ctype_base.h \
- /usr/include/c++/13/bits/streambuf_iterator.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/ctype_inline.h \
- /usr/include/c++/13/bits/locale_facets.tcc \
- /usr/include/c++/13/bits/basic_ios.tcc \
- /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/x86intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/x86gprintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/ia32intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/adxintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/bmiintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/bmi2intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/cetintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/cldemoteintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/clflushoptintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/clwbintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/clzerointrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/cmpccxaddintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/enqcmdintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/fxsrintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/lzcntintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/lwpintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/movdirintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/mwaitintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/mwaitxintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/pconfigintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/popcntintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/pkuintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/prfchiintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/raointintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/rdseedintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/rtmintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/serializeintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/sgxintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/tbmintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/tsxldtrkintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/uintrintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/waitpkgintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/wbnoinvdintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/xsaveintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/xsavecintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/xsaveoptintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/xsavesintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/xtestintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/hresetintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/immintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/mmintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/xmmintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/mm_malloc.h \
- /usr/include/c++/13/stdlib.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/emmintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/pmmintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/tmmintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/smmintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/wmmintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avxintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avxvnniintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avxifmaintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avxvnniint8intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx2intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512fintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512erintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512pfintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512cdintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vlintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512bwintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512dqintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vlbwintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vldqintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512ifmaintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512ifmavlintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vbmiintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vbmivlintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx5124fmapsintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx5124vnniwintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vpopcntdqintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vbmi2intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vbmi2vlintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vnniintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vnnivlintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vpopcntdqvlintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512bitalgintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vp2intersectintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512vp2intersectvlintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512fp16intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512fp16vlintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/shaintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/fmaintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/f16cintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/gfniintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/vaesintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/vpclmulqdqintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512bf16vlintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avx512bf16intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/avxneconvertintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/amxtileintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/amxint8intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/amxbf16intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/amxcomplexintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/prfchwintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/keylockerintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/amxfp16intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/mm3dnow.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/fma4intrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/ammintrin.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/xopintrin.h \
- /usr/include/c++/13/limits /usr/local/include/openvdb/math/Math.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/ctype_base.h \
+ /usr/include/c++/14/bits/streambuf_iterator.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/ctype_inline.h \
+ /usr/include/c++/14/bits/locale_facets.tcc \
+ /usr/include/c++/14/bits/basic_ios.tcc \
+ /usr/include/c++/14/bits/ostream.tcc /usr/include/c++/14/istream \
+ /usr/include/c++/14/bits/istream.tcc \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/x86intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/x86gprintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/ia32intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/adxintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/bmiintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/bmi2intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/cetintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/cldemoteintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/clflushoptintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/clwbintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/clzerointrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/cmpccxaddintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/enqcmdintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/fxsrintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/lzcntintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/lwpintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/movdirintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/mwaitintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/mwaitxintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/pconfigintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/popcntintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/pkuintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/prfchiintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/raointintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/rdseedintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/rtmintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/serializeintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/sgxintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/tbmintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/tsxldtrkintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/uintrintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/waitpkgintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/wbnoinvdintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/xsaveintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/xsavecintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/xsaveoptintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/xsavesintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/xtestintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/hresetintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/usermsrintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/immintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/mm_malloc.h \
+ /usr/include/c++/14/stdlib.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/emmintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/pmmintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/tmmintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/smmintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/wmmintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avxintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avxvnniintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avxifmaintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avxvnniint8intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avxvnniint16intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx2intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512fintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512erintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512pfintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512cdintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vlintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512bwintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512dqintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vlbwintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vldqintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512ifmaintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512ifmavlintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vbmiintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vbmivlintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx5124fmapsintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx5124vnniwintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vpopcntdqintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vbmi2intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vbmi2vlintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vnniintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vnnivlintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vpopcntdqvlintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512bitalgintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512bitalgvlintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vp2intersectintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512vp2intersectvlintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512fp16intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512fp16vlintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/shaintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/sm3intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/sha512intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/sm4intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/fmaintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/f16cintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/gfniintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/vaesintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/vpclmulqdqintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512bf16vlintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512bf16intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/avxneconvertintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/amxtileintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/amxint8intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/amxbf16intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/amxcomplexintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/prfchwintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/keylockerintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/amxfp16intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/mm3dnow.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/fma4intrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/ammintrin.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/xopintrin.h \
+ /usr/include/c++/14/limits /usr/local/include/openvdb/math/Math.h \
  /usr/local/include/openvdb/util/Assert.h \
  /usr/include/boost/numeric/conversion/conversion_traits.hpp \
  /usr/include/boost/numeric/conversion/detail/conversion_traits.hpp \
@@ -246,7 +253,7 @@ CMakeFiles/Cube.dir/cube.cpp.o: \
  /usr/include/boost/config/detail/select_compiler_config.hpp \
  /usr/include/boost/config/compiler/gcc.hpp \
  /usr/include/boost/config/detail/select_stdlib_config.hpp \
- /usr/include/c++/13/version \
+ /usr/include/c++/14/version \
  /usr/include/boost/config/stdlib/libstdcpp3.hpp /usr/include/unistd.h \
  /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
  /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
@@ -420,105 +427,123 @@ CMakeFiles/Cube.dir/cube.cpp.o: \
  /usr/include/boost/mpl/aux_/preprocessor/default_params.hpp \
  /usr/include/boost/mpl/less.hpp \
  /usr/include/boost/mpl/aux_/preprocessed/gcc/less.hpp \
- /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
- /usr/include/c++/13/bits/algorithmfwd.h \
- /usr/include/c++/13/bits/stl_heap.h \
- /usr/include/c++/13/bits/uniform_int_dist.h \
- /usr/include/c++/13/bits/stl_tempbuf.h \
- /usr/include/c++/13/pstl/glue_algorithm_defs.h \
- /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/cassert \
- /usr/include/assert.h /usr/include/c++/13/cmath /usr/include/math.h \
+ /usr/include/c++/14/algorithm /usr/include/c++/14/bits/stl_algo.h \
+ /usr/include/c++/14/bits/algorithmfwd.h \
+ /usr/include/c++/14/bits/stl_heap.h \
+ /usr/include/c++/14/bits/uniform_int_dist.h \
+ /usr/include/c++/14/bits/stl_tempbuf.h \
+ /usr/include/c++/14/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/14/pstl/execution_defs.h /usr/include/c++/14/cassert \
+ /usr/include/assert.h /usr/include/c++/14/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
  /usr/include/bits/fp-fast.h \
  /usr/include/bits/mathcalls-helper-functions.h \
  /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
- /usr/include/bits/iscanonical.h /usr/include/c++/13/bits/specfun.h \
- /usr/include/c++/13/tr1/gamma.tcc \
- /usr/include/c++/13/tr1/special_function_util.h \
- /usr/include/c++/13/tr1/bessel_function.tcc \
- /usr/include/c++/13/tr1/beta_function.tcc \
- /usr/include/c++/13/tr1/ell_integral.tcc \
- /usr/include/c++/13/tr1/exp_integral.tcc \
- /usr/include/c++/13/tr1/hypergeometric.tcc \
- /usr/include/c++/13/tr1/legendre_function.tcc \
- /usr/include/c++/13/tr1/modified_bessel_func.tcc \
- /usr/include/c++/13/tr1/poly_hermite.tcc \
- /usr/include/c++/13/tr1/poly_laguerre.tcc \
- /usr/include/c++/13/tr1/riemann_zeta.tcc /usr/include/c++/13/cstring \
- /usr/include/string.h /usr/include/strings.h /usr/include/c++/13/random \
- /usr/include/c++/13/bits/random.h /usr/include/c++/13/vector \
- /usr/include/c++/13/bits/stl_uninitialized.h \
- /usr/include/c++/13/bits/stl_vector.h \
- /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc \
- /usr/include/c++/13/x86_64-redhat-linux/bits/opt_random.h \
- /usr/include/c++/13/bits/random.tcc /usr/include/c++/13/numeric \
- /usr/include/c++/13/bits/stl_numeric.h \
- /usr/include/c++/13/pstl/glue_numeric_defs.h \
+ /usr/include/bits/iscanonical.h /usr/include/c++/14/bits/specfun.h \
+ /usr/include/c++/14/tr1/gamma.tcc \
+ /usr/include/c++/14/tr1/special_function_util.h \
+ /usr/include/c++/14/tr1/bessel_function.tcc \
+ /usr/include/c++/14/tr1/beta_function.tcc \
+ /usr/include/c++/14/tr1/ell_integral.tcc \
+ /usr/include/c++/14/tr1/exp_integral.tcc \
+ /usr/include/c++/14/tr1/hypergeometric.tcc \
+ /usr/include/c++/14/tr1/legendre_function.tcc \
+ /usr/include/c++/14/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/14/tr1/poly_hermite.tcc \
+ /usr/include/c++/14/tr1/poly_laguerre.tcc \
+ /usr/include/c++/14/tr1/riemann_zeta.tcc /usr/include/c++/14/cstring \
+ /usr/include/string.h /usr/include/strings.h /usr/include/c++/14/random \
+ /usr/include/c++/14/bits/random.h /usr/include/c++/14/vector \
+ /usr/include/c++/14/bits/stl_uninitialized.h \
+ /usr/include/c++/14/bits/stl_vector.h \
+ /usr/include/c++/14/bits/stl_bvector.h \
+ /usr/include/c++/14/bits/vector.tcc \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/opt_random.h \
+ /usr/include/c++/14/bits/random.tcc /usr/include/c++/14/numeric \
+ /usr/include/c++/14/bits/stl_numeric.h \
+ /usr/include/c++/14/pstl/glue_numeric_defs.h \
  /usr/local/include/openvdb/math/BBox.h \
  /usr/local/include/openvdb/math/Math.h \
  /usr/local/include/openvdb/math/Vec3.h \
- /usr/local/include/openvdb/Exceptions.h /usr/include/c++/13/sstream \
- /usr/include/c++/13/bits/sstream.tcc \
+ /usr/local/include/openvdb/Exceptions.h /usr/include/c++/14/sstream \
+ /usr/include/c++/14/bits/sstream.tcc \
  /usr/local/include/openvdb/math/Tuple.h \
  /usr/local/include/openvdb/math/Quat.h \
  /usr/local/include/openvdb/math/Mat.h \
- /usr/local/include/openvdb/math/Mat3.h /usr/include/c++/13/iomanip \
- /usr/include/c++/13/locale \
- /usr/include/c++/13/bits/locale_facets_nonio.h /usr/include/c++/13/ctime \
- /usr/include/c++/13/x86_64-redhat-linux/bits/time_members.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/13/bits/codecvt.h \
- /usr/include/c++/13/bits/locale_facets_nonio.tcc \
- /usr/include/c++/13/bits/locale_conv.h \
- /usr/include/c++/13/bits/quoted_string.h \
+ /usr/local/include/openvdb/math/Mat3.h /usr/include/c++/14/iomanip \
+ /usr/include/c++/14/locale \
+ /usr/include/c++/14/bits/locale_facets_nonio.h /usr/include/c++/14/ctime \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/time_members.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/14/bits/codecvt.h \
+ /usr/include/c++/14/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/14/bits/locale_conv.h \
+ /usr/include/c++/14/bits/quoted_string.h \
  /usr/local/include/openvdb/math/Vec2.h \
  /usr/local/include/openvdb/math/Vec3.h \
  /usr/local/include/openvdb/math/Vec4.h \
  /usr/local/include/openvdb/math/Mat3.h \
  /usr/local/include/openvdb/math/Mat4.h \
  /usr/local/include/openvdb/math/Vec4.h \
- /usr/local/include/openvdb/math/Coord.h /usr/include/c++/13/functional \
- /usr/include/c++/13/bits/std_function.h \
- /usr/include/c++/13/unordered_map \
- /usr/include/c++/13/bits/unordered_map.h \
- /usr/include/c++/13/bits/hashtable.h \
- /usr/include/c++/13/bits/hashtable_policy.h \
- /usr/include/c++/13/ext/aligned_buffer.h \
- /usr/include/c++/13/bits/enable_special_members.h \
- /usr/include/c++/13/bits/node_handle.h \
- /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/array \
- /usr/include/c++/13/compare /usr/include/tbb/blocked_range.h \
- /usr/include/tbb/tbb_stddef.h /usr/include/tbb/tbb_config.h \
- /usr/include/c++/13/memory \
- /usr/include/c++/13/bits/stl_raw_storage_iter.h \
- /usr/include/c++/13/bits/align.h /usr/include/c++/13/bits/unique_ptr.h \
- /usr/include/c++/13/bits/shared_ptr.h \
- /usr/include/c++/13/bits/shared_ptr_base.h \
- /usr/include/c++/13/bits/allocated_ptr.h \
- /usr/include/c++/13/ext/concurrence.h \
- /usr/include/c++/13/bits/shared_ptr_atomic.h \
- /usr/include/c++/13/bits/atomic_base.h \
- /usr/include/c++/13/bits/atomic_lockfree_defines.h \
- /usr/include/c++/13/backward/auto_ptr.h \
- /usr/include/c++/13/pstl/glue_memory_defs.h /usr/include/c++/13/utility \
- /usr/include/c++/13/bits/stl_relops.h \
- /usr/local/include/openvdb/openvdb.h /usr/local/include/openvdb/Types.h \
+ /usr/local/include/openvdb/math/Coord.h /usr/include/c++/14/functional \
+ /usr/include/c++/14/bits/std_function.h \
+ /usr/include/c++/14/unordered_map \
+ /usr/include/c++/14/bits/unordered_map.h \
+ /usr/include/c++/14/bits/hashtable.h \
+ /usr/include/c++/14/bits/hashtable_policy.h \
+ /usr/include/c++/14/ext/aligned_buffer.h \
+ /usr/include/c++/14/bits/enable_special_members.h \
+ /usr/include/c++/14/bits/node_handle.h \
+ /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/array \
+ /usr/include/c++/14/compare /usr/include/tbb/blocked_range.h \
+ /usr/include/oneapi/tbb/blocked_range.h \
+ /usr/include/oneapi/tbb/detail/_range_common.h \
+ /usr/include/oneapi/tbb/detail/_config.h \
+ /usr/include/oneapi/tbb/detail/_export.h \
+ /usr/include/oneapi/tbb/detail/_utils.h /usr/include/c++/14/atomic \
+ /usr/include/c++/14/bits/atomic_base.h \
+ /usr/include/c++/14/bits/atomic_lockfree_defines.h \
+ /usr/include/oneapi/tbb/detail/_assert.h \
+ /usr/include/oneapi/tbb/detail/_machine.h /usr/include/c++/14/climits \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/limits.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/syslimits.h \
+ /usr/include/limits.h /usr/include/bits/posix1_lim.h \
+ /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
+ /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
+ /usr/include/bits/uio_lim.h /usr/include/c++/14/thread \
+ /usr/include/c++/14/bits/std_thread.h \
+ /usr/include/c++/14/bits/unique_ptr.h \
+ /usr/include/c++/14/bits/this_thread_sleep.h \
+ /usr/include/c++/14/bits/chrono.h /usr/include/c++/14/ratio \
+ /usr/include/c++/14/bits/parse_numbers.h /usr/include/c++/14/iterator \
+ /usr/include/c++/14/bits/stream_iterator.h \
+ /usr/include/oneapi/tbb/detail/_namespace_injection.h \
+ /usr/include/oneapi/tbb/version.h \
+ /usr/include/oneapi/tbb/detail/_config.h /usr/include/c++/14/memory \
+ /usr/include/c++/14/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/14/bits/align.h /usr/include/c++/14/bits/shared_ptr.h \
+ /usr/include/c++/14/bits/shared_ptr_base.h \
+ /usr/include/c++/14/bits/allocated_ptr.h \
+ /usr/include/c++/14/ext/concurrence.h \
+ /usr/include/c++/14/bits/shared_ptr_atomic.h \
+ /usr/include/c++/14/backward/auto_ptr.h \
+ /usr/include/c++/14/pstl/glue_memory_defs.h \
  /usr/local/include/openvdb/Metadata.h \
  /usr/local/include/openvdb/Exceptions.h \
  /usr/local/include/openvdb/math/Math.h \
- /usr/local/include/openvdb/util/Name.h /usr/include/c++/13/set \
- /usr/include/c++/13/bits/stl_tree.h /usr/include/c++/13/bits/stl_set.h \
- /usr/include/c++/13/bits/stl_multiset.h \
+ /usr/local/include/openvdb/util/Name.h /usr/include/c++/14/set \
+ /usr/include/c++/14/bits/stl_tree.h /usr/include/c++/14/bits/stl_set.h \
+ /usr/include/c++/14/bits/stl_multiset.h \
  /usr/local/include/openvdb/util/Assert.h \
  /usr/local/include/openvdb/math/Maps.h \
  /usr/local/include/openvdb/math/Mat4.h \
  /usr/local/include/openvdb/math/BBox.h \
  /usr/local/include/openvdb/math/Coord.h \
- /usr/local/include/openvdb/io/io.h /usr/include/c++/13/any \
- /usr/include/c++/13/map /usr/include/c++/13/bits/stl_map.h \
- /usr/include/c++/13/bits/stl_multimap.h \
+ /usr/local/include/openvdb/io/io.h /usr/local/include/openvdb/Types.h \
+ /usr/include/c++/14/any /usr/include/c++/14/map \
+ /usr/include/c++/14/bits/stl_map.h \
+ /usr/include/c++/14/bits/stl_multimap.h \
  /usr/local/include/openvdb/util/Name.h \
  /usr/local/include/openvdb/math/Transform.h \
  /usr/local/include/openvdb/math/Maps.h /usr/local/include/openvdb/Grid.h \
@@ -533,41 +558,35 @@ CMakeFiles/Cube.dir/cube.cpp.o: \
  /usr/local/include/openvdb/MetaMap.h /usr/local/include/openvdb/io/io.h \
  /usr/local/include/openvdb/io/DelayedLoadMetadata.h \
  /usr/local/include/openvdb/util/NodeMasks.h \
- /usr/include/tbb/parallel_for.h \
- /usr/include/tbb/internal/_warning_suppress_enable_notice.h \
- /usr/include/tbb/tbb_config.h /usr/include/tbb/task.h \
- /usr/include/tbb/internal/_deprecated_header_message_guard.h \
- /usr/include/tbb/tbb_config.h /usr/include/tbb/tbb_machine.h \
- /usr/include/tbb/machine/gcc_generic.h \
- /usr/include/tbb/machine/gcc_ia32_common.h \
- /usr/include/tbb/machine/gcc_itsx.h \
- /usr/include/tbb/machine/linux_common.h /usr/include/sys/syscall.h \
- /usr/include/asm/unistd.h /usr/include/asm/unistd_64.h \
- /usr/include/bits/syscall.h /usr/include/linux/futex.h \
- /usr/include/linux/types.h /usr/include/asm/types.h \
- /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
- /usr/include/asm/bitsperlong.h /usr/include/asm-generic/bitsperlong.h \
- /usr/include/linux/posix_types.h /usr/include/linux/stddef.h \
- /usr/include/asm/posix_types.h /usr/include/asm/posix_types_64.h \
- /usr/include/asm-generic/posix_types.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/limits.h \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/syslimits.h \
- /usr/include/limits.h /usr/include/bits/posix1_lim.h \
- /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
- /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
- /usr/include/bits/uio_lim.h /usr/include/tbb/tbb_profiling.h \
- /usr/include/tbb/internal/_tbb_strings.h /usr/include/tbb/atomic.h \
- /usr/include/tbb/internal/_warning_suppress_disable_notice.h \
- /usr/include/c++/13/climits /usr/include/tbb/partitioner.h \
- /usr/include/tbb/task_arena.h /usr/include/tbb/tbb_exception.h \
- /usr/include/tbb/tbb_allocator.h \
- /usr/include/tbb/internal/_template_helpers.h \
- /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
- /usr/include/tbb/aligned_space.h /usr/include/tbb/blocked_range.h \
- /usr/include/tbb/internal/_tbb_trace_impl.h \
- /usr/include/tbb/tbb_profiling.h /usr/include/tbb/parallel_reduce.h \
- /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
- /usr/include/c++/13/bits/deque.tcc \
+ /usr/include/tbb/parallel_for.h /usr/include/oneapi/tbb/parallel_for.h \
+ /usr/include/oneapi/tbb/detail/_exception.h \
+ /usr/include/oneapi/tbb/detail/_task.h \
+ /usr/include/oneapi/tbb/detail/_template_helpers.h \
+ /usr/include/c++/14/utility /usr/include/c++/14/bits/stl_relops.h \
+ /usr/include/oneapi/tbb/detail/_small_object_pool.h \
+ /usr/include/oneapi/tbb/profiling.h \
+ /usr/include/oneapi/tbb/detail/_string_resource.h \
+ /usr/include/c++/14/mutex /usr/include/c++/14/bits/std_mutex.h \
+ /usr/include/c++/14/bits/unique_lock.h \
+ /usr/include/oneapi/tbb/detail/_small_object_pool.h \
+ /usr/include/oneapi/tbb/profiling.h \
+ /usr/include/oneapi/tbb/partitioner.h \
+ /usr/include/oneapi/tbb/detail/_aligned_space.h \
+ /usr/include/oneapi/tbb/detail/_utils.h \
+ /usr/include/oneapi/tbb/detail/_template_helpers.h \
+ /usr/include/oneapi/tbb/cache_aligned_allocator.h \
+ /usr/include/c++/14/memory_resource /usr/include/c++/14/shared_mutex \
+ /usr/include/oneapi/tbb/task_group.h \
+ /usr/include/oneapi/tbb/detail/_assert.h \
+ /usr/include/oneapi/tbb/detail/_intrusive_list_node.h \
+ /usr/include/oneapi/tbb/detail/_task_handle.h \
+ /usr/include/oneapi/tbb/detail/_task.h \
+ /usr/include/oneapi/tbb/task_arena.h \
+ /usr/include/oneapi/tbb/detail/_attach.h /usr/include/oneapi/tbb/info.h \
+ /usr/include/oneapi/tbb/blocked_range.h \
+ /usr/include/tbb/parallel_reduce.h \
+ /usr/include/oneapi/tbb/parallel_reduce.h /usr/include/c++/14/deque \
+ /usr/include/c++/14/bits/stl_deque.h /usr/include/c++/14/bits/deque.tcc \
  /usr/local/include/openvdb/tree/NodeManager.h \
  /usr/local/include/openvdb/util/Formats.h \
  /usr/local/include/openvdb/util/logging.h \
@@ -576,23 +595,27 @@ CMakeFiles/Cube.dir/cube.cpp.o: \
  /usr/local/include/openvdb/tree/NodeUnion.h \
  /usr/local/include/openvdb/tree/LeafNode.h \
  /usr/local/include/openvdb/tree/LeafBuffer.h \
- /usr/include/tbb/spin_mutex.h /usr/include/tbb/internal/_mutex_padding.h \
- /usr/include/tbb/internal/_x86_eliding_mutex_impl.h \
- /usr/include/c++/13/atomic \
+ /usr/include/tbb/spin_mutex.h /usr/include/oneapi/tbb/spin_mutex.h \
+ /usr/include/oneapi/tbb/detail/_mutex_common.h \
+ /usr/include/oneapi/tbb/detail/_scoped_lock.h \
+ /usr/include/oneapi/tbb/detail/_rtm_mutex.h \
+ /usr/include/oneapi/tbb/spin_mutex.h \
  /usr/local/include/openvdb/tree/LeafNodeBool.h \
  /usr/local/include/openvdb/tree/LeafNodeMask.h \
  /usr/local/include/openvdb/tree/TreeIterator.h \
  /usr/local/include/openvdb/tree/ValueAccessor.h \
- /usr/include/c++/13/mutex /usr/include/c++/13/bits/chrono.h \
- /usr/include/c++/13/ratio /usr/include/c++/13/bits/parse_numbers.h \
- /usr/include/c++/13/bits/std_mutex.h \
- /usr/include/c++/13/bits/unique_lock.h \
- /usr/include/tbb/concurrent_hash_map.h /usr/include/tbb/spin_rw_mutex.h \
- /usr/include/tbb/internal/_x86_rtm_rw_mutex_impl.h \
- /usr/include/tbb/tbb_stddef.h /usr/include/tbb/tbb_machine.h \
- /usr/include/tbb/spin_rw_mutex.h \
- /usr/include/tbb/internal/_tbb_hash_compare_impl.h \
- /usr/include/tbb/internal/_allocator_traits.h \
+ /usr/include/tbb/concurrent_hash_map.h \
+ /usr/include/oneapi/tbb/concurrent_hash_map.h \
+ /usr/include/oneapi/tbb/detail/_allocator_traits.h \
+ /usr/include/oneapi/tbb/detail/_containers_helpers.h \
+ /usr/include/oneapi/tbb/detail/_allocator_traits.h \
+ /usr/include/oneapi/tbb/detail/_hash_compare.h \
+ /usr/include/oneapi/tbb/detail/_containers_helpers.h \
+ /usr/include/oneapi/tbb/tbb_allocator.h \
+ /usr/include/oneapi/tbb/detail/_utils.h \
+ /usr/include/oneapi/tbb/spin_rw_mutex.h \
+ /usr/include/oneapi/tbb/detail/_rtm_rw_mutex.h \
+ /usr/include/oneapi/tbb/spin_rw_mutex.h \
  /usr/local/include/openvdb/util/logging.h \
  /usr/local/include/openvdb/points/PointDataGrid.h \
  /usr/local/include/openvdb/Grid.h /usr/local/include/openvdb/tree/Tree.h \
@@ -600,9 +623,10 @@ CMakeFiles/Cube.dir/cube.cpp.o: \
  /usr/local/include/openvdb/tools/PointIndexGrid.h \
  /usr/local/include/openvdb/tools/PointPartitioner.h \
  /usr/local/include/openvdb/math/Transform.h \
- /usr/include/tbb/task_arena.h \
+ /usr/include/tbb/task_arena.h /usr/include/oneapi/tbb/task_arena.h \
  /usr/local/include/openvdb/thread/Threading.h /usr/include/tbb/task.h \
- /usr/include/tbb/task_group.h \
+ /usr/include/oneapi/tbb/task.h /usr/include/tbb/task_group.h \
+ /usr/include/oneapi/tbb/task_group.h \
  /usr/local/include/openvdb/points/AttributeArray.h \
  /usr/local/include/openvdb/math/QuantizedUnitVec.h \
  /usr/local/include/openvdb/points/IndexIterator.h \
@@ -626,8 +650,10 @@ CMakeFiles/Cube.dir/cube.cpp.o: \
  /usr/local/include/openvdb/tools/Prune.h \
  /usr/local/include/openvdb/tools/SignedFloodFill.h \
  /usr/include/tbb/enumerable_thread_specific.h \
- /usr/include/tbb/concurrent_vector.h \
- /usr/include/tbb/cache_aligned_allocator.h \
- /usr/include/c++/13/memory_resource /usr/include/c++/13/shared_mutex \
- /usr/include/tbb/tbb_thread.h /usr/include/tbb/tick_count.h \
- /usr/include/tbb/partitioner.h
+ /usr/include/oneapi/tbb/enumerable_thread_specific.h \
+ /usr/include/oneapi/tbb/concurrent_vector.h \
+ /usr/include/oneapi/tbb/detail/_segment_table.h \
+ /usr/include/oneapi/tbb/detail/_exception.h \
+ /usr/include/oneapi/tbb/task.h /usr/include/tbb/partitioner.h \
+ /usr/include/oneapi/tbb/partitioner.h \
+ /usr/local/include/openvdb/tools/LevelSetSphere.h

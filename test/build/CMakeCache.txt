@@ -24,12 +24,12 @@ Blosc_LIBRARY_DEBUG:FILEPATH=Blosc_LIBRARY_DEBUG-NOTFOUND
 Blosc_LIBRARY_RELEASE:FILEPATH=/usr/lib64/libblosc.so
 
 //The directory containing a CMake configuration file for Boost.
-Boost_DIR:PATH=/usr/lib64/cmake/Boost-1.81.0
+Boost_DIR:PATH=/usr/lib64/cmake/Boost-1.83.0
 
 //Path to a file.
 Boost_INCLUDE_DIR:PATH=/usr/include
 
-Boost_IOSTREAMS_LIBRARY_RELEASE:STRING=/usr/lib64/libboost_iostreams.so.1.81.0
+Boost_IOSTREAMS_LIBRARY_RELEASE:STRING=/usr/lib64/libboost_iostreams.so.1.83.0
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
@@ -289,10 +289,11 @@ OpenVDB_openvdb_INCLUDE_DIR:PATH=/usr/local/include
 //Path to a library.
 OpenVDB_openvdb_LIBRARY:FILEPATH=/usr/local/lib64/libopenvdb.so
 
-Tbb_INCLUDE_DIR:STRING=/usr/include
+//Path to a file.
+Tbb_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a file.
-Tbb_LEGACY_INCLUDE_DIR:PATH=/usr/include
+Tbb_LEGACY_INCLUDE_DIR:PATH=Tbb_LEGACY_INCLUDE_DIR-NOTFOUND
 
 //Path to a library.
 Tbb_tbb_LIBRARY_DEBUG:FILEPATH=Tbb_tbb_LIBRARY_DEBUG-NOTFOUND
@@ -319,10 +320,10 @@ ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
 ZLIB_LIBRARY_RELEASE:FILEPATH=/usr/lib64/libz.so
 
 //The directory containing a CMake configuration file for boost_headers.
-boost_headers_DIR:PATH=/usr/lib64/cmake/boost_headers-1.81.0
+boost_headers_DIR:PATH=/usr/lib64/cmake/boost_headers-1.83.0
 
 //The directory containing a CMake configuration file for boost_iostreams.
-boost_iostreams_DIR:PATH=/usr/lib64/cmake/boost_iostreams-1.81.0
+boost_iostreams_DIR:PATH=/usr/lib64/cmake/boost_iostreams-1.83.0
 
 
 ########################
@@ -340,9 +341,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/dtseng/Downloads/research/etching_simulations
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=27
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=28
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=7
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -515,15 +516,15 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Blosc
 FIND_PACKAGE_MESSAGE_DETAILS_Blosc:INTERNAL=[/usr/lib64/libblosc.so][/usr/include][v1.21.5()]
 //Details about finding Boost
-FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib64/cmake/Boost-1.81.0/BoostConfig.cmake][cfound components: iostreams ][v1.81.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib64/cmake/Boost-1.83.0/BoostConfig.cmake][cfound components: iostreams ][v1.83.0()]
 //Details about finding OpenVDB
 FIND_PACKAGE_MESSAGE_DETAILS_OpenVDB:INTERNAL=[/usr/local/include][/usr/local/lib64/libopenvdb.so][cfound components: openvdb ][v11.0.1()]
 //Details about finding TBB
-FIND_PACKAGE_MESSAGE_DETAILS_TBB:INTERNAL=[/usr/include][/usr/lib64/libtbb.so][cfound components: tbb ][v2020.3()]
+FIND_PACKAGE_MESSAGE_DETAILS_TBB:INTERNAL=[/usr/include][/usr/lib64/libtbb.so][cfound components: tbb ][v2021.11()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding ZLIB
-FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/usr/lib64/libz.so][/usr/include][c ][v1.2.13()]
+FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/usr/lib64/libz.so][/usr/include][c ][v1.3.0()]
 //ADVANCED property for variable: ZLIB_INCLUDE_DIR
 ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ZLIB_LIBRARY_DEBUG

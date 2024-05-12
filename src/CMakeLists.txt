@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.18)
+project("Etch")
+add_executable(cube "cube.cpp")
+add_executable(etch "etch.cpp")
+
+list(APPEND CMAKE_MODULE_PATH "/usr/local/lib64/cmake/OpenVDB")
+find_package(OpenVDB REQUIRED)
+target_link_libraries(etch PUBLIC OpenVDB::openvdb)
+target_link_libraries(cube PUBLIC OpenVDB::openvdb)
+

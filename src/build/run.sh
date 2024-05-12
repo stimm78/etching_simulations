@@ -1,5 +1,5 @@
 cmake ..
 bear -- make
-./Cube
-./Etch
+./cube
+./etch
 
