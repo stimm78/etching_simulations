@@ -6,13 +6,11 @@ int main()
     openvdb::initialize();
     openvdb::FloatGrid::Ptr cubeA = 
         openvdb::tools::createLevelSetCube<openvdb::FloatGrid>(
-            /*scale=*/1.0f, /*center=*/openvdb::Vec3f(0,0,0),
-            /*voxel size=*/1, /*width=*/1.0);
+            /*scale=*/1.5f, /*center=*/openvdb::Vec3f(0,0,0));
     cubeA->setName("LevelSetCube1");
     openvdb::FloatGrid::Ptr cubeB = 
         openvdb::tools::createLevelSetCube<openvdb::FloatGrid>(
-            /*scale=*/1.0f, /*center=*/openvdb::Vec3f(0,0.5,0),
-            /*voxel size=*/1, /*width=*/1.0);
+            /*scale=*/1.0f, /*center=*/openvdb::Vec3f(0,0.5,0));
     cubeA->setName("LevelSetCubeA");
     cubeB->setName("LevelSetCubeB");
     // Create a VDB file object and write out the grid.
