@@ -70,4 +70,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/cube.dir/DependInfo.cmake"
   "CMakeFiles/etch.dir/DependInfo.cmake"
+  "CMakeFiles/gds.dir/DependInfo.cmake"
   )

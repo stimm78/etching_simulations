@@ -142,6 +142,19 @@ etch/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/etch.dir/build.make CMakeFiles/etch.dir/build
 .PHONY : etch/fast
 
+#=============================================================================
+# Target rules for targets named gds
+
+# Build rule for target.
+gds: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gds
+.PHONY : gds
+
+# fast build rule for target.
+gds/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/build
+.PHONY : gds/fast
+
 cube.o: cube.cpp.o
 .PHONY : cube.o
 
@@ -190,6 +203,30 @@ etch.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/etch.dir/build.make CMakeFiles/etch.dir/etch.cpp.s
 .PHONY : etch.cpp.s
 
+gds_data.o: gds_data.cpp.o
+.PHONY : gds_data.o
+
+# target to build an object file
+gds_data.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_data.cpp.o
+.PHONY : gds_data.cpp.o
+
+gds_data.i: gds_data.cpp.i
+.PHONY : gds_data.i
+
+# target to preprocess a source file
+gds_data.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_data.cpp.i
+.PHONY : gds_data.cpp.i
+
+gds_data.s: gds_data.cpp.s
+.PHONY : gds_data.s
+
+# target to generate assembly for a file
+gds_data.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_data.cpp.s
+.PHONY : gds_data.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -200,12 +237,16 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... cube"
 	@echo "... etch"
+	@echo "... gds"
 	@echo "... cube.o"
 	@echo "... cube.i"
 	@echo "... cube.s"
 	@echo "... etch.o"
 	@echo "... etch.i"
 	@echo "... etch.s"
+	@echo "... gds_data.o"
+	@echo "... gds_data.i"
+	@echo "... gds_data.s"
 .PHONY : help
 
 

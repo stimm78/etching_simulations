@@ -7,4 +7,4 @@ list(APPEND CMAKE_MODULE_PATH "/usr/local/lib64/cmake/OpenVDB")
 find_package(OpenVDB REQUIRED)
 target_link_libraries(etch PUBLIC OpenVDB::openvdb)
 target_link_libraries(cube PUBLIC OpenVDB::openvdb)
-
+target_link_libraries(gds PUBLIC OpenVDB::openvdb)

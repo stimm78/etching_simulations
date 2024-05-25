@@ -8,11 +8,11 @@
       "-DOPENVDB_USE_DELAYED_LOADING",
       "-c",
       "-o",
-      "CMakeFiles/cube.dir/cube.cpp.o",
-      "/home/dtseng/Downloads/research/etching_simulations/src/cube.cpp"
+      "CMakeFiles/gds.dir/gds_data.cpp.o",
+      "/home/dtseng/Downloads/research/etching_simulations/src/gds_data.cpp"
     ],
     "directory": "/home/dtseng/Downloads/research/etching_simulations/src/build",
-    "file": "/home/dtseng/Downloads/research/etching_simulations/src/cube.cpp",
-    "output": "/home/dtseng/Downloads/research/etching_simulations/src/build/CMakeFiles/cube.dir/cube.cpp.o"
+    "file": "/home/dtseng/Downloads/research/etching_simulations/src/gds_data.cpp",
+    "output": "/home/dtseng/Downloads/research/etching_simulations/src/build/CMakeFiles/gds.dir/gds_data.cpp.o"
   }
 ]
