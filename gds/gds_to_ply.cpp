@@ -118,8 +118,10 @@ void writePLY(const vector<LayerPolygonList3D>& polygons3D, const string& filena
 
     for (const auto& layerpl : polygons3D) {
         for (const auto& polygon : layerpl.pl3D) {
+            int n = polygon.size() / 2; // Number of vertices in each face
             vertexCount += polygon.size();
-            faceCount += polygon.size() / 2; // Each face will have one top and one bottom
+            faceCount += 2 * (n - 2); // Triangular faces for top and bottom
+            faceCount += n; // Quad faces for sides
         }
     }
 
@@ -147,11 +149,26 @@ void writePLY(const vector<LayerPolygonList3D>& polygons3D, const string& filena
     int vertexIndex = 0;
     for (const auto& layerpl : polygons3D) {
         for (const auto& polygon : layerpl.pl3D) {
-            int polygonSize = polygon.size() / 2; // Number of vertices per polygon face (top and bottom)
-            for (int i = 0; i < polygonSize; i++) {
-                plyFile << "3 " << vertexIndex + i << " " << vertexIndex + (i + 1) % polygonSize << " " << vertexIndex + polygonSize + i << "\n";
-                plyFile << "3 " << vertexIndex + polygonSize + i << " " << vertexIndex + (i + 1) % polygonSize << " " << vertexIndex + polygonSize + (i + 1) % polygonSize << "\n";
+            int n = polygon.size() / 2; // Number of vertices in each face
+
+            // Top face
+            for (int i = 1; i < n - 1; ++i) {
+                plyFile << "3 " << vertexIndex << " " << vertexIndex + i << " " << vertexIndex + i + 1 << "\n";
             }
+
+            // Bottom face
+            int bottomStart = vertexIndex + n;
+            for (int i = 1; i < n - 1; ++i) {
+                plyFile << "3 " << bottomStart << " " << bottomStart + i + 1 << " " << bottomStart + i << "\n";
+            }
+
+            // Side faces
+            for (int i = 0; i < n; ++i) {
+                int next = (i + 1) % n;
+                // First triangle of quad
+                plyFile << "4 " << vertexIndex + i << " " << vertexIndex + next << " " << bottomStart + next << " " << bottomStart + i << "\n";
+            }
+
             vertexIndex += polygon.size();
         }
     }
