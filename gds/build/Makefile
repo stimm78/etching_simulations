@@ -129,66 +129,29 @@ gds/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/build
 .PHONY : gds/fast
 
-#=============================================================================
-# Target rules for targets named test
-
-# Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
-.PHONY : test
-
-# fast build rule for target.
-test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
-
-gds_data.o: gds_data.cpp.o
-.PHONY : gds_data.o
+gds_to_ply.o: gds_to_ply.cpp.o
+.PHONY : gds_to_ply.o
 
 # target to build an object file
-gds_data.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_data.cpp.o
-.PHONY : gds_data.cpp.o
+gds_to_ply.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_to_ply.cpp.o
+.PHONY : gds_to_ply.cpp.o
 
-gds_data.i: gds_data.cpp.i
-.PHONY : gds_data.i
-
-# target to preprocess a source file
-gds_data.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_data.cpp.i
-.PHONY : gds_data.cpp.i
-
-gds_data.s: gds_data.cpp.s
-.PHONY : gds_data.s
-
-# target to generate assembly for a file
-gds_data.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_data.cpp.s
-.PHONY : gds_data.cpp.s
-
-test.o: test.cpp.o
-.PHONY : test.o
-
-# target to build an object file
-test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cpp.o
-.PHONY : test.cpp.o
-
-test.i: test.cpp.i
-.PHONY : test.i
+gds_to_ply.i: gds_to_ply.cpp.i
+.PHONY : gds_to_ply.i
 
 # target to preprocess a source file
-test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cpp.i
-.PHONY : test.cpp.i
+gds_to_ply.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_to_ply.cpp.i
+.PHONY : gds_to_ply.cpp.i
 
-test.s: test.cpp.s
-.PHONY : test.s
+gds_to_ply.s: gds_to_ply.cpp.s
+.PHONY : gds_to_ply.s
 
 # target to generate assembly for a file
-test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cpp.s
-.PHONY : test.cpp.s
+gds_to_ply.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_to_ply.cpp.s
+.PHONY : gds_to_ply.cpp.s
 
 # Help Target
 help:
@@ -199,13 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... gds"
-	@echo "... test"
-	@echo "... gds_data.o"
-	@echo "... gds_data.i"
-	@echo "... gds_data.s"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
+	@echo "... gds_to_ply.o"
+	@echo "... gds_to_ply.i"
+	@echo "... gds_to_ply.s"
 .PHONY : help
 
 

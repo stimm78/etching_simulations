@@ -3,6 +3,7 @@
 #include <openvdb/openvdb.h>
 #include <cstdio>
 #include <string>
+#include <fstream>
 
 using namespace std;
 using namespace libGDSII;
@@ -34,7 +35,7 @@ GDSIIData* readGDS(const char* gdsFileName) {
     }
     return gdsIIData;
 }
-// ------------------ 2D
+
 vector<LayerPolygonList> parseGDSPolygons(GDSIIData* gdsIIData) { // given gds file, returns a vector of LayerPolygonLists
     vector<LayerPolygonList> layerPolygonLists;
 
@@ -60,7 +61,7 @@ void printPolygons(const vector<LayerPolygonList>& layerPolygonLists) { // for d
         std::cout << "-----\n";
     }
 }
-// ------------------ 3D
+
 vector<LayerPolygonList3D> polygonTo3D(vector<LayerPolygonList>& layerPolygonLists, double z) {
     vector<LayerPolygonList3D> layerPolygonLists3D;
     for (auto& layerpl : layerPolygonLists) { // iterate through layerpolygons
@@ -74,7 +75,7 @@ vector<LayerPolygonList3D> polygonTo3D(vector<LayerPolygonList>& layerPolygonLis
                 Point3D point1 = Point3D{vx, vy, 0};
                 polygonList3D[np * 2].push_back(point1); 
             } 
-            for (int nv = 0; nv < layerpl.pl[np].size() / 2; nv++) { // iterate through vertices of polygon layerpl.pl[np] again (not efficient, but probably works)
+            for (int nv = 0; nv < layerpl.pl[np].size() / 2; nv++) { // iterate through vertices of polygon layerpl.pl[np] again (not efficient, but works)
                 double vx = layerpl.pl[np][2 * nv + 0];
                 double vy = layerpl.pl[np][2 * nv + 1];
                 
@@ -103,9 +104,61 @@ void printPolygons3D(const vector<LayerPolygonList3D>& layerPolygonLists3D) { //
     }
 }
 
-// void writePLY(const vector<LayerPolygonList>& polygons) { //To do? Or write directly to VDB
-//
-// }
+void writePLY(const vector<LayerPolygonList3D>& polygons3D, const string& filename) {
+    ofstream plyFile(filename);
+
+    if (!plyFile) {
+        cerr << "Error: Cannot open file " << filename << " for writing." << endl;
+        return;
+    }
+
+    // Count the total number of vertices and faces
+    int vertexCount = 0;
+    int faceCount = 0;
+
+    for (const auto& layerpl : polygons3D) {
+        for (const auto& polygon : layerpl.pl3D) {
+            vertexCount += polygon.size();
+            faceCount += polygon.size() / 2; // Each face will have one top and one bottom
+        }
+    }
+
+    // Write PLY header
+    plyFile << "ply\n";
+    plyFile << "format ascii 1.0\n";
+    plyFile << "element vertex " << vertexCount << "\n";
+    plyFile << "property float x\n";
+    plyFile << "property float y\n";
+    plyFile << "property float z\n";
+    plyFile << "element face " << faceCount << "\n";
+    plyFile << "property list uchar int vertex_indices\n";
+    plyFile << "end_header\n";
+
+    // Write vertices
+    for (const auto& layerpl : polygons3D) {
+        for (const auto& polygon : layerpl.pl3D) {
+            for (const auto& vertex : polygon) {
+                plyFile << vertex.x << " " << vertex.y << " " << vertex.z << "\n";
+            }
+        }
+    }
+
+    // Write faces
+    int vertexIndex = 0;
+    for (const auto& layerpl : polygons3D) {
+        for (const auto& polygon : layerpl.pl3D) {
+            int polygonSize = polygon.size() / 2; // Number of vertices per polygon face (top and bottom)
+            for (int i = 0; i < polygonSize; i++) {
+                plyFile << "3 " << vertexIndex + i << " " << vertexIndex + (i + 1) % polygonSize << " " << vertexIndex + polygonSize + i << "\n";
+                plyFile << "3 " << vertexIndex + polygonSize + i << " " << vertexIndex + (i + 1) % polygonSize << " " << vertexIndex + polygonSize + (i + 1) % polygonSize << "\n";
+            }
+            vertexIndex += polygon.size();
+        }
+    }
+
+    plyFile.close();
+    cout << "PLY file written to " << filename << endl;
+}
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -115,10 +168,11 @@ int main(int argc, char* argv[]) {
     
     GDSIIData* gdsIIData = readGDS(argv[1]);
     vector<LayerPolygonList> polygons = parseGDSPolygons(gdsIIData);
-    vector<LayerPolygonList3D> polygons3D = polygonTo3D(polygons, 5.0);
+    vector<LayerPolygonList3D> polygons3D = polygonTo3D(polygons, 1000.0);
 
     // printPolygons(polygons);
-    printPolygons3D(polygons3D);
+    // printPolygons3D(polygons3D);
+    writePLY(polygons3D, "output.ply");
     delete gdsIIData; // don't leak memory
 
     return 0;
