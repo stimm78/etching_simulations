@@ -36,7 +36,7 @@ GDSIIData* readGDS(const char* gdsFileName) {
     return gdsIIData;
 }
 
-vector<LayerPolygonList> parseGDSPolygons(GDSIIData* gdsIIData) { // given gds file, returns a vector of LayerPolygonLists
+vector<LayerPolygonList> parseGDSPolygons(GDSIIData* gdsIIData) { // parses a GDS file for all polygons, returns a vector of LayerPolygonLists
     vector<LayerPolygonList> layerPolygonLists;
 
     iVec Layers = gdsIIData->Layers;
@@ -62,31 +62,24 @@ void printPolygons(const vector<LayerPolygonList>& layerPolygonLists) { // for d
     }
 }
 
-vector<LayerPolygonList3D> polygonTo3D(vector<LayerPolygonList>& layerPolygonLists, double z) {
-    vector<LayerPolygonList3D> layerPolygonLists3D;
-    for (auto& layerpl : layerPolygonLists) { // iterate through layerpolygons
-        vector<pVec> polygonList3D(layerpl.pl.size() * 2); // Double the size of the vector to accommodate extruded vertices
-        for (int np = 0; np < layerpl.pl.size(); np++) { // iterate through polygons in polygonList
-            for (int nv = 0; nv < layerpl.pl[np].size() / 2; nv++) { // iterate through vertices of polygon layerpl.pl[np]
-                double vx = layerpl.pl[np][2 * nv + 0];
-                double vy = layerpl.pl[np][2 * nv + 1];
-                
-                // Push the original vertex with z-coordinate 0
-                Point3D point1 = Point3D{vx, vy, 0};
-                polygonList3D[np * 2].push_back(point1); 
-            } 
-            for (int nv = 0; nv < layerpl.pl[np].size() / 2; nv++) { // iterate through vertices of polygon layerpl.pl[np] again (not efficient, but works)
-                double vx = layerpl.pl[np][2 * nv + 0];
-                double vy = layerpl.pl[np][2 * nv + 1];
-                
-                // Push the extruded vertex with the specified z-coordinate
-                Point3D point2 = Point3D{vx, vy, z};
-                polygonList3D[np * 2 + 1].push_back(point2);
+vector<LayerPolygonList3D> polygonTo3D(const vector<LayerPolygonList>& polygons, double height) {
+    vector<LayerPolygonList3D> polygons3D;
+    for (const auto& layerPolygon : polygons) {
+        LayerPolygonList3D layerPolygon3D;
+        layerPolygon3D.layer = layerPolygon.layer;
+        for (const auto& polygon : layerPolygon.pl) {
+            pVec polygon3D;
+            for (int i = 0; i < polygon.size(); i += 2) {
+                double x = polygon[i];
+                double y = polygon[i + 1];
+                polygon3D.push_back(Point3D(x, y, -height)); // Bottom face vertex
+                polygon3D.push_back(Point3D(x, y, height)); // Top face vertex
             }
+            layerPolygon3D.pl3D.push_back(polygon3D);
         }
-        layerPolygonLists3D.push_back(LayerPolygonList3D{layerpl.layer, polygonList3D});
+        polygons3D.push_back(layerPolygon3D);
     }
-    return layerPolygonLists3D;
+    return polygons3D;
 }
 
 void printPolygons3D(const vector<LayerPolygonList3D>& layerPolygonLists3D) { // for debugging
