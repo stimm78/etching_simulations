@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/dtseng/Downloads/research/etching_simulations/gds_v2/triangle
 
-CXX_FLAGS = 
+CXX_FLAGS = -std=gnu++17
 

@@ -153,6 +153,54 @@ gds_to_ply.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_to_ply.cpp.s
 .PHONY : gds_to_ply.cpp.s
 
+triangle/tpp_assert.o: triangle/tpp_assert.cpp.o
+.PHONY : triangle/tpp_assert.o
+
+# target to build an object file
+triangle/tpp_assert.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/triangle/tpp_assert.cpp.o
+.PHONY : triangle/tpp_assert.cpp.o
+
+triangle/tpp_assert.i: triangle/tpp_assert.cpp.i
+.PHONY : triangle/tpp_assert.i
+
+# target to preprocess a source file
+triangle/tpp_assert.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/triangle/tpp_assert.cpp.i
+.PHONY : triangle/tpp_assert.cpp.i
+
+triangle/tpp_assert.s: triangle/tpp_assert.cpp.s
+.PHONY : triangle/tpp_assert.s
+
+# target to generate assembly for a file
+triangle/tpp_assert.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/triangle/tpp_assert.cpp.s
+.PHONY : triangle/tpp_assert.cpp.s
+
+triangle/tpp_impl.o: triangle/tpp_impl.cpp.o
+.PHONY : triangle/tpp_impl.o
+
+# target to build an object file
+triangle/tpp_impl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/triangle/tpp_impl.cpp.o
+.PHONY : triangle/tpp_impl.cpp.o
+
+triangle/tpp_impl.i: triangle/tpp_impl.cpp.i
+.PHONY : triangle/tpp_impl.i
+
+# target to preprocess a source file
+triangle/tpp_impl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/triangle/tpp_impl.cpp.i
+.PHONY : triangle/tpp_impl.cpp.i
+
+triangle/tpp_impl.s: triangle/tpp_impl.cpp.s
+.PHONY : triangle/tpp_impl.s
+
+# target to generate assembly for a file
+triangle/tpp_impl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/triangle/tpp_impl.cpp.s
+.PHONY : triangle/tpp_impl.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +213,12 @@ help:
 	@echo "... gds_to_ply.o"
 	@echo "... gds_to_ply.i"
 	@echo "... gds_to_ply.s"
+	@echo "... triangle/tpp_assert.o"
+	@echo "... triangle/tpp_assert.i"
+	@echo "... triangle/tpp_assert.s"
+	@echo "... triangle/tpp_impl.o"
+	@echo "... triangle/tpp_impl.i"
+	@echo "... triangle/tpp_impl.s"
 .PHONY : help
 
 
