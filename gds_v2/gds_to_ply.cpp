@@ -1,8 +1,11 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
 #include <map>
 #include <string>
+#include <tuple>
 #include <utility>
-#include <vector>
+#include <algorithm>
 #include "libGDSII.h"
 #include "triangle/tpp_interface.hpp"
 
@@ -17,7 +20,7 @@ struct Vertex2D {
 struct Vertex3D {
     double x, y, z;
 };
-struct Triangle { // A triangle is a triplet of vertex indices
+struct Triplet { 
     int x, y, z;
 };
 
@@ -25,7 +28,8 @@ typedef vector<Vertex2D> Polygon2D;
 typedef vector<Polygon2D> PolygonList2D;
 typedef vector<Vertex3D> Polygon3D;
 typedef vector<Polygon3D> PolygonList3D;
-typedef vector<Triangle> triangleList;
+typedef vector<Triplet> Triangles; // Triangles is a vector of triplets
+typedef vector<Triangles> TrianglesList;
 
 // Takes input GDS file and returns its data
 GDSIIData* readGDS(const char* gdsFileName) {
@@ -63,7 +67,7 @@ map<int, PolygonList> extractPolygons(GDSIIData* gdsIIData) {
  * layerMap2D = {
  *  6 : [[Vertex1, Vertex2, Vertex3, ...], [Vertex1, Vertex2, Vertex3, ...], ...]
  * }
- * Where vertex is Vertex2D{x, y}
+ * Where vertex is Vertex2D{x, y} and a vector of Vertices is a Polygon2D
  * */
 map<int, PolygonList2D> layerMapTo2D(map<int, PolygonList> layerMap) {
     map<int, PolygonList2D> layerMap2D;
@@ -86,102 +90,27 @@ map<int, PolygonList2D> layerMapTo2D(map<int, PolygonList> layerMap) {
     return layerMap2D;
 }
 
-/* Extrudes polygons in the layerMap to extrusionHeight and -extrusionHeight. Returns a layerMap3D.
- * A layerMap3D is the following:
- * layerMap3D = {
- *  6 : [[Vertex1, Vertex2, Vertex3, ...], [Vertex1, Vertex2, Vertex3, ...], ...]
- * }
- * Where vertex is Vertex3D{x, y, z} and z is the extrusionHeight
- * EDIT AFTER COMPLETING TRIANGULATION
- * */
-map<int, PolygonList3D> extrudePolygons(map<int, PolygonList> layerMap, double extrusionHeight) {
-    map<int, PolygonList3D> layerMap3D;
-    map<int, PolygonList>::iterator it; 
-    for (it = layerMap.begin(); it != layerMap.end(); it++) {
-        int layerNumber = it->first;
-        PolygonList polygons = it->second;
-
-        PolygonList3D pList3D;
-        for (const auto& polygon : polygons) {
-            Polygon3D p3D;
-            for (int i = 0; i < polygon.size(); i+=2) {
-                double x = polygon[i];
-                double y = polygon[i+1];
-                p3D.push_back(Vertex3D{x, y, -extrusionHeight});
-            }
-            for (int i = 0; i < polygon.size(); i+=2) {
-                double x = polygon[i];
-                double y = polygon[i+1];
-                p3D.push_back(Vertex3D{x, y, extrusionHeight});
-            }
-            pList3D.push_back(p3D);
-        }
-        layerMap3D[layerNumber] = pList3D;
-    }
-    return layerMap3D;
-}
-
-void printPolygons(map<int, PolygonList> layerMap) {
-    map<int, PolygonList>::iterator it;
-    for (it = layerMap.begin(); it != layerMap.end(); it++) {
-        int layerNumber = it->first;
-        PolygonList polygons = it->second;
-        printf("Layer %d:\n", layerNumber);
-        // Iterate through the list of polygons
-        for (size_t i = 0; i < polygons.size(); ++i) {
-            vector<double> polygon = polygons[i];
-            printf("  Polygon %zu: [", i);
-            for (size_t j = 0; j < polygon.size(); ++j) {
-                printf("%f", polygon[j]); // Use %e for scientific notation
-                if (j != polygon.size() - 1) {
-                    printf(", ");
-                }
-            }
-            printf("]\n");
-        }
-    }
-}
-
-void printPolygons3D(map<int, PolygonList3D> layerMap3D) {
-    map<int, PolygonList3D>::iterator it;
-    for (it = layerMap3D.begin(); it != layerMap3D.end(); it++) {
-        int layerNumber = it->first;
-        PolygonList3D polygons = it->second;
-        printf("Layer %d:\n", layerNumber);
-        // Iterate through the list of polygons
-        for (size_t i = 0; i < polygons.size(); ++i) {
-            const Polygon3D& polygon = polygons[i];
-            printf("  Polygon %zu:\n", i);
-            for (size_t j = 0; j < polygon.size(); ++j) {
-                const Vertex3D& vertex = polygon[j];
-                printf("    Vertex %zu: (%e, %e, %e)\n", j, vertex.x, vertex.y, vertex.z);
-            }
-        }
-    }
-}
-
 /* Constained Delanauy triangulation of polygons. Returns a map of layer number to triangleList.
  * A triangleList is the following:
  * triMap = {
- * 6 : [Triangle1, Triangle2, ...]
+ * 6 : [[Triangle1, Triangle2, ...], [Triangle1, Triangle2, ...], ...]
  * }
- * where each Triangle is a struct of three Vertex2Ds.
+ * where each Triangle is a Triplet of three Vertex2Ds, and each vector of triangles is a triangleList
 */
-map<int, triangleList> triangulatePolygons(map<int, PolygonList2D> layerMap2D) {
-    // map<int, int> numTriangles; // store number of triangles for each layer
-    map<int, triangleList> triMap;
+pair<Polygon2D, TrianglesList> triangulatePolygons(map<int, PolygonList2D> layerMap2D) {
+    map<int, TrianglesList> triMap;
     map<int, PolygonList2D>::iterator it;
     for (it = layerMap2D.begin(); it != layerMap2D.end(); it++) {
         int layerNumber = it->first;
         PolygonList2D polygons = it->second;
-
+        TrianglesList triList;
         for (size_t i = 0; i < polygons.size(); i++) { // Might need CW or CCW orientation?
             Polygon2D polygon = polygons[i];
             int totalPolygonPoints = polygons[i].size(); 
 
             vector<int> pointVector; // pointVector is [0, 1, 2, ... polygons[i].size()]
             for (int j = 0; j < totalPolygonPoints; j++) {
-                pointVector.push_back(i); 
+                pointVector.push_back(j); 
             } 
 
             vector<int> rotated_array(totalPolygonPoints); // Shift all elements right, wrap last element
@@ -209,40 +138,132 @@ map<int, triangleList> triangulatePolygons(map<int, PolygonList2D> layerMap2D) {
             trGenerator.setSegmentConstraint(segments);
             bool enforceQuality = false;
             trGenerator.Triangulate(enforceQuality);
+            Triangles triangles;
             for (FaceIterator fit = trGenerator.fbegin(); fit != trGenerator.fend(); ++fit) {
                 int vertexIdx1 = fit.Org();
                 int vertexIdx2 = fit.Dest();
                 int vertexIdx3 = fit.Apex();
-                Triangle triangle{vertexIdx1, vertexIdx2, vertexIdx3};
-                triMap[layerNumber].push_back(triangle);
+                triangles.push_back(Triplet{vertexIdx1, vertexIdx2, vertexIdx3});
                 // double x1 = delaunayInput[vertexIdx1][0];
                 // double y1 = delaunayInput[vertexIdx1][1];
                 // double x2 = delaunayInput[vertexIdx2][0];
                 // double y2 = delaunayInput[vertexIdx2][1];
                 // double x3 = delaunayInput[vertexIdx3][0];
                 // double y3 = delaunayInput[vertexIdx3][1];
-                // Vertex2D a{x1, y1};
-                // Vertex2D b{x2, y2};
-                // Vertex2D c{x3, y3};
             }
+            triMap[layerNumber].push_back(triangles);
         }
     }
     return triMap;
 }
 
-void printTriangulatedPolygons(map<int, triangleList> triMap) {
-    for (auto it = triMap.begin(); it != triMap.end(); ++it) {
-        int layerNumber = it->first;
-        triangleList triangles = it->second;
+// void printTriangulatedPolygons(map<int, TrianglesList> triMap) {
+//     for (auto it = triMap.begin(); it != triMap.end(); ++it) {
+//         int layerNumber = it->first;
+//         TrianglesList triList = it->second;
+//
+//         cout << "Layer " << layerNumber << ":" << endl;
+//         for (size_t i = 0; i < triList.size(); ++i) {
+//
+//         }
+//     }
+// }
 
-        cout << "Layer " << layerNumber << ":" << endl;
-        for (size_t i = 0; i < triangles.size(); ++i) {
-            Triangle triangle = triangles[i];
-            cout << "  Triangle " << i << ": (" << triangle.x << ", " << triangle.y << ", " << triangle.z << ")" << endl;
+vector<Vertex3D> insertZ(const Polygon2D& points, double z) {
+    vector<Vertex3D> result;
+    for (const auto& p : points) {
+        result.push_back({p.x, p.y, z});
+    }
+    return result;
+}
+
+vector<Vertex3D> roll(const vector<Vertex3D>& points) {
+    vector<Vertex3D> result = points;
+    rotate(result.begin(), result.begin() + 1, result.end());
+    return result;
+}
+
+void extrudePolygons(const map<int, PolygonList2D>& layerMap2D, const map<int, TrianglesList>& triMap, double zmin, double zmax, map<int, vector<Triangle>>& extrudedTriangles) {
+    for (const auto& layer : layerMap2D) {
+        int layerID = layer.first;
+        const auto& polygons = layer.second;
+
+        for (const auto& polygon : polygons) {
+            vector<Vertex3D> points_i_min = insertZ(polygon, zmin);
+            vector<Vertex3D> points_i_max = insertZ(polygon, zmax);
+            vector<Vertex3D> points_j_min = roll(points_i_min);
+            vector<Vertex3D> points_j_max = roll(points_i_max);
+
+            for (size_t i = 0; i < points_i_min.size(); ++i) {
+                // Create the side faces of the extrusion
+                extrudedTriangles[layerID].push_back({points_i_min[i], points_j_min[i], points_j_max[i]});
+                extrudedTriangles[layerID].push_back({points_j_max[i], points_i_max[i], points_i_min[i]});
+            }
+
+            // Add the top and bottom faces using the triangulated 2D polygons
+            const auto& triangles = triMap.at(layerID);
+            for (const auto& triangle : triangles) {
+                for (const auto& triplet : triangle) {
+                    // Bottom face
+                    extrudedTriangles[layerID].push_back({
+                        points_i_min[triplet.x],
+                        points_i_min[triplet.y],
+                        points_i_min[triplet.z]
+                    });
+
+                    // Top face
+                    extrudedTriangles[layerID].push_back({
+                        points_i_max[triplet.x],
+                        points_i_max[triplet.y],
+                        points_i_max[triplet.z]
+                    });
+                }
+            }
         }
     }
 }
+void writePLY(const map<int, vector<Triangle>>& extrudedTriangles, const string& filename) {
+    ofstream plyFile;
+    plyFile.open(filename);
 
+    plyFile << "ply\nformat ascii 1.0\n";
+    size_t vertexCount = 0;
+    size_t faceCount = 0;
+    map<Vertex3D, int> vertexMap;
+    vector<Vertex3D> vertices;
+    vector<vector<int>> faces;
+
+    for (const auto& layer : extrudedTriangles) {
+        const auto& triangles = layer.second;
+        for (const auto& triangle : triangles) {
+            vector<int> face;
+            for (const auto& vertex : {triangle.v1, triangle.v2, triangle.v3}) {
+                if (vertexMap.find(vertex) == vertexMap.end()) {
+                    vertexMap[vertex] = vertexCount++;
+                    vertices.push_back(vertex);
+                }
+                face.push_back(vertexMap[vertex]);
+            }
+            faces.push_back(face);
+        }
+    }
+
+    plyFile << "element vertex " << vertexCount << "\n";
+    plyFile << "property float x\nproperty float y\nproperty float z\n";
+    plyFile << "element face " << faces.size() << "\n";
+    plyFile << "property list uchar int vertex_indices\n";
+    plyFile << "end_header\n";
+
+    for (const auto& vertex : vertices) {
+        plyFile << vertex.x << " " << vertex.y << " " << vertex.z << "\n";
+    }
+
+    for (const auto& face : faces) {
+        plyFile << "3 " << face[0] << " " << face[1] << " " << face[2] << "\n";
+    }
+
+    plyFile.close();
+}
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -255,7 +276,7 @@ int main(int argc, char* argv[]) {
     map<int, PolygonList> layerMap = extractPolygons(gdsIIData);
 
     map<int, PolygonList2D> layerMap2D = layerMapTo2D(layerMap);
-    map<int, triangleList> triList = triangulatePolygons(layerMap2D);
+    map<int, TrianglesList> triMap = triangulatePolygons(layerMap2D);
     // printTriangulatedPolygons(triList);
 
     // double extrusionHeight = 100.0;
