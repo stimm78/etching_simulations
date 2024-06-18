@@ -17,10 +17,15 @@ struct Vertex2D {
 struct Vertex3D {
     double x, y, z;
 };
+struct Triangle { // A triangle is a triplet of vertex indices
+    int x, y, z;
+};
+
 typedef vector<Vertex2D> Polygon2D;
 typedef vector<Polygon2D> PolygonList2D;
 typedef vector<Vertex3D> Polygon3D;
 typedef vector<Polygon3D> PolygonList3D;
+typedef vector<Triangle> triangleList;
 
 // Takes input GDS file and returns its data
 GDSIIData* readGDS(const char* gdsFileName) {
@@ -155,15 +160,21 @@ void printPolygons3D(map<int, PolygonList3D> layerMap3D) {
     }
 }
 
-// Constained Delanauy triangulation of polygons. Refer to https://github.com/dteal/gdsiistl/blob/master/gdsiistl.py/
-void triangulatePolygons(map<int, PolygonList2D> layerMap2D) {
-    map<int, int> numTriangles; // store number of triangles for each layer
+/* Constained Delanauy triangulation of polygons. Returns a map of layer number to triangleList.
+ * A triangleList is the following:
+ * triMap = {
+ * 6 : [Triangle1, Triangle2, ...]
+ * }
+ * where each Triangle is a struct of three Vertex2Ds.
+*/
+map<int, triangleList> triangulatePolygons(map<int, PolygonList2D> layerMap2D) {
+    // map<int, int> numTriangles; // store number of triangles for each layer
+    map<int, triangleList> triMap;
     map<int, PolygonList2D>::iterator it;
     for (it = layerMap2D.begin(); it != layerMap2D.end(); it++) {
         int layerNumber = it->first;
         PolygonList2D polygons = it->second;
 
-        // numTriangles[layerNumber] = 0; // Might need to get numTriangles for each layer?
         for (size_t i = 0; i < polygons.size(); i++) { // Might need CW or CCW orientation?
             Polygon2D polygon = polygons[i];
             int totalPolygonPoints = polygons[i].size(); 
@@ -202,22 +213,36 @@ void triangulatePolygons(map<int, PolygonList2D> layerMap2D) {
                 int vertexIdx1 = fit.Org();
                 int vertexIdx2 = fit.Dest();
                 int vertexIdx3 = fit.Apex();
-
-                // Access data from original input
-                double x1 = delaunayInput[vertexIdx1][0];
-                double y1 = delaunayInput[vertexIdx1][1];
-                double x2 = delaunayInput[vertexIdx2][0];
-                double y2 = delaunayInput[vertexIdx2][1];
-                double x3 = delaunayInput[vertexIdx3][0];
-                double y3 = delaunayInput[vertexIdx3][1];
-
-                std::cout << "Layer " << layerNumber << ", Triangle vertices: (" << x1 << ", " << y1 << "), "
-                    << "(" << x2 << ", " << y2 << "), "
-                    << "(" << x3 << ", " << y3 << ")\n";
+                Triangle triangle{vertexIdx1, vertexIdx2, vertexIdx3};
+                triMap[layerNumber].push_back(triangle);
+                // double x1 = delaunayInput[vertexIdx1][0];
+                // double y1 = delaunayInput[vertexIdx1][1];
+                // double x2 = delaunayInput[vertexIdx2][0];
+                // double y2 = delaunayInput[vertexIdx2][1];
+                // double x3 = delaunayInput[vertexIdx3][0];
+                // double y3 = delaunayInput[vertexIdx3][1];
+                // Vertex2D a{x1, y1};
+                // Vertex2D b{x2, y2};
+                // Vertex2D c{x3, y3};
             }
         }
     }
+    return triMap;
 }
+
+void printTriangulatedPolygons(map<int, triangleList> triMap) {
+    for (auto it = triMap.begin(); it != triMap.end(); ++it) {
+        int layerNumber = it->first;
+        triangleList triangles = it->second;
+
+        cout << "Layer " << layerNumber << ":" << endl;
+        for (size_t i = 0; i < triangles.size(); ++i) {
+            Triangle triangle = triangles[i];
+            cout << "  Triangle " << i << ": (" << triangle.x << ", " << triangle.y << ", " << triangle.z << ")" << endl;
+        }
+    }
+}
+
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -230,11 +255,12 @@ int main(int argc, char* argv[]) {
     map<int, PolygonList> layerMap = extractPolygons(gdsIIData);
 
     map<int, PolygonList2D> layerMap2D = layerMapTo2D(layerMap);
-    // triangulatePolygons(layerMap2D);
+    map<int, triangleList> triList = triangulatePolygons(layerMap2D);
+    // printTriangulatedPolygons(triList);
 
     // double extrusionHeight = 100.0;
     // map<int, PolygonList3D> layerMap3D = extrudePolygons(layerMap, extrusionHeight);
-    printPolygons(layerMap);
+    // printPolygons(layerMap);
     // printPolygons3D(layerMap3D);
 
     delete gdsIIData;

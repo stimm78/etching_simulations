@@ -17,12 +17,11 @@ set(SOURCES
     gds_to_ply.cpp
     triangle/tpp_assert.cpp
     triangle/tpp_impl.cpp
-    # Add other source files if necessary
 )
 
 # Add executable
 add_executable(gds ${SOURCES})
 
-# Link custom GDSII library and Triangle++ library
+# Link custom GDSII library
 target_link_libraries(gds PUBLIC -l:libGDSII.a)
 

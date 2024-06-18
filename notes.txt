@@ -1,0 +1,2 @@
+* Do layer numbers have specific meanings?
+* Concerns about triangulating holes
