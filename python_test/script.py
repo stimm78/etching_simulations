@@ -238,7 +238,8 @@ def print_layers(layers):
     print("}")
 
 # Call the print function
-print_layers(layers)# """
+# print_layers(layers)# """
+
 # At this point, "layers" is as follows:
 #
 # layers = {
@@ -269,64 +270,64 @@ print_layers(layers)# """
 # # for somewhat accelerated vector math. See the documentation at
 # # (https://numpy-stl.readthedocs.io/en/latest/)
 #
-# print('Extruding polygons and writing to files...')
-#
-# # loop through all layers
-# for layer in layers:
-#
-#     # but skip layer if it won't be exported
-#     if not layer in layerstack.keys():
-#         continue
-#
-#     # Make a list of triangles.
-#     # This data contains vertex xyz position data as follows:
-#     # layer_mesh_data['vectors'] = [ [[x1,y1,z1], [x2,y2,z1], [x3,y3,z3]], ...]
-#     layer_mesh_data = np.zeros(num_triangles[layer], dtype=mesh.Mesh.dtype)
-#
-#     layer_pointer = 0
-#     for index, (polygon, triangles, clockwise) in enumerate(layers[layer]):
-#
-#         # The numpy-stl library expects counterclockwise triangles. That is,
-#         # one side of each triangle is the outside surface of the STL file
-#         # object (assuming a watertight volume), and the other side is the
-#         # inside surface. If looking at a triangle from the outside, the
-#         # vertices should be in counterclockwise order. Failure to do so may
-#         # cause certain STL file display programs to not display the
-#         # triangles correctly (e.g., the backward triangles will be invisible).
-#
-#         zmin, zmax, layername = layerstack[layer]
-#
-#         # make a list of triangles around the polygon boundary
-#         points_i = polygon # list of 2D vertices
-#         if clockwise: # order polygon 2D vertices counter-clockwise
-#             points_i = np.flip(polygon, axis=0)
-#         points_i_min = np.insert(points_i, 2, zmin, axis=1) # bottom left
-#         points_i_max = np.insert(points_i, 2, zmax, axis=1) # top left
-#         points_j_min = np.roll(points_i_min, -1, axis=0) # bottom right
-#         points_j_max = np.roll(points_i_max, -1, axis=0) # top right
-#         rights = np.stack((points_i_min, points_j_min, points_j_max), axis=1)
-#         lefts = np.stack((points_j_max, points_i_max, points_i_min), axis=1)
-#
-#         # make a list of polygon interior (face) triangles
-#         vs = triangles['vertices']
-#         ts = triangles['triangles']
-#         if len(ts) > 0:
-#             face_tris = np.take(vs, ts, axis=0)
-#             top = np.insert(face_tris, 2, zmax, axis=2) # list of top triangles
-#             bottom = np.insert(face_tris, 2, zmin, axis=2) # list of bottom ~
-#             bottom = np.flip(bottom, axis=1) # reverse vertex order to make CCW
-#             faces = np.concatenate((lefts, rights, top, bottom), axis=0)
-#         else: # didn't generate any triangles! (degenerate edge case)
-#             faces = np.concatenate((lefts, rights), axis=0)
-#
-#         # add side and face triangles to layer mesh
-#         layer_mesh_data['vectors'][layer_pointer:(layer_pointer+len(faces))] = faces
-#         layer_pointer += len(faces)
-#
-#     # save layer to STL file
-#     filename = gdsii_file_path + '_{}.stl'.format(layername)
-#     print('    ({}, {}) to {}'.format(layer, layername, filename))
-#     layer_mesh_object = mesh.Mesh(layer_mesh_data, remove_empty_areas=False)
-#     layer_mesh_object.save(filename)
-#
-# print('Done.')
+print('Extruding polygons and writing to files...')
+
+# loop through all layers
+for layer in layers:
+
+    # but skip layer if it won't be exported
+    if not layer in layerstack.keys():
+        continue
+
+    # Make a list of triangles.
+    # This data contains vertex xyz position data as follows:
+    # layer_mesh_data['vectors'] = [ [[x1,y1,z1], [x2,y2,z1], [x3,y3,z3]], ...]
+    layer_mesh_data = np.zeros(num_triangles[layer], dtype=mesh.Mesh.dtype)
+
+    layer_pointer = 0
+    for index, (polygon, triangles, clockwise) in enumerate(layers[layer]):
+
+        # The numpy-stl library expects counterclockwise triangles. That is,
+        # one side of each triangle is the outside surface of the STL file
+        # object (assuming a watertight volume), and the other side is the
+        # inside surface. If looking at a triangle from the outside, the
+        # vertices should be in counterclockwise order. Failure to do so may
+        # cause certain STL file display programs to not display the
+        # triangles correctly (e.g., the backward triangles will be invisible).
+
+        zmin, zmax, layername = layerstack[layer]
+
+        # make a list of triangles around the polygon boundary
+        points_i = polygon # list of 2D vertices
+        if clockwise: # order polygon 2D vertices counter-clockwise
+            points_i = np.flip(polygon, axis=0)
+        points_i_min = np.insert(points_i, 2, zmin, axis=1) # bottom left
+        points_i_max = np.insert(points_i, 2, zmax, axis=1) # top left
+        points_j_min = np.roll(points_i_min, -1, axis=0) # bottom right
+        points_j_max = np.roll(points_i_max, -1, axis=0) # top right
+        rights = np.stack((points_i_min, points_j_min, points_j_max), axis=1)
+        lefts = np.stack((points_j_max, points_i_max, points_i_min), axis=1)
+
+        # make a list of polygon interior (face) triangles
+        vs = triangles['vertices']
+        ts = triangles['triangles']
+        if len(ts) > 0:
+            face_tris = np.take(vs, ts, axis=0)
+            top = np.insert(face_tris, 2, zmax, axis=2) # list of top triangles
+            bottom = np.insert(face_tris, 2, zmin, axis=2) # list of bottom ~
+            bottom = np.flip(bottom, axis=1) # reverse vertex order to make CCW
+            faces = np.concatenate((lefts, rights, top, bottom), axis=0)
+        else: # didn't generate any triangles! (degenerate edge case)
+            faces = np.concatenate((lefts, rights), axis=0)
+
+        # add side and face triangles to layer mesh
+        layer_mesh_data['vectors'][layer_pointer:(layer_pointer+len(faces))] = faces
+        layer_pointer += len(faces)
+
+    # save layer to STL file
+    filename = gdsii_file_path + '_{}.stl'.format(layername)
+    print('    ({}, {}) to {}'.format(layer, layername, filename))
+    layer_mesh_object = mesh.Mesh(layer_mesh_data, remove_empty_areas=False)
+    layer_mesh_object.save(filename)
+
+print('Done.')
