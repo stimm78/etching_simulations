@@ -19,7 +19,7 @@ struct Vertex2D {
 struct Vertex3D {
     double x, y, z;
 };
-struct Triplet { 
+struct Triangle { 
     int x, y, z;
 };
 
@@ -27,17 +27,16 @@ typedef vector<Vertex2D> Polygon2D; // Polygon2D is a vector of vertices Vertex2
 typedef vector<Polygon2D> PolygonList2D; // PolygonList2D is a vector of Polygon2Ds
 typedef vector<Vertex3D> Polygon3D;// Polygon3D is a vector of vertices Vertex3D{x, y, z}
 typedef vector<Polygon3D> PolygonList3D;// Polygon3D is a vector of vertices Polygon3Ds
-typedef vector<Triplet> Triangles; // Triangles is a vector of triplets
-typedef vector<Triangles> TrianglesList;// TriangleList is a vector of Triangles 
+typedef vector<Triangle> TriangleList; 
 
 struct Element2D { // Element is a struct of the polygon, its triangulation, and whether it is clockwise
     Polygon2D polygon2D;
-    Triangles triangles; 
+    TriangleList triangles; 
     bool clockwise;
 };
 struct Element3D { // Element is a struct of the polygon, its triangulation, and whether it is clockwise
     Polygon3D polygon3D;
-    Triangles triangles; 
+    TriangleList triangles; 
     bool clockwise;
 };
 typedef vector<Element2D> ElementList2D;
@@ -95,7 +94,7 @@ map<int, ElementList2D> layerMapToElementList(map<int, PolygonList>& layerMap) {
         for (const auto& polygon : polygons) {
 
             Polygon2D polygon2D;
-            Triangles triangles;
+            TriangleList triangles;
             bool clockwise = false;
             Element2D element;
 
@@ -113,7 +112,9 @@ map<int, ElementList2D> layerMapToElementList(map<int, PolygonList>& layerMap) {
 }
 
 /* Checks clockwise configuration of points in polygon using method linked here:
- * https://stackoverflow.com/questions/1165647/how-to-determine-if-a-list-of-polygon-points-are-in-clockwise-order*/
+ * https://stackoverflow.com/questions/1165647/how-to-determine-if-a-list-of-polygon-points-are-in-clockwise-order
+ * Not sure if this is necessary for PLY files */
+
 bool checkClockwise(Polygon2D polygon) {
     double area = 0;
     for (int i = 0; i < polygon.size(); i++) {
@@ -135,7 +136,7 @@ void triangulatePolygons(map<int, ElementList2D>& layerMap) {
 
         for (int i = 0; i < elements.size(); i++) {
             Polygon2D polygon2D = elements[i].polygon2D;
-            Triangles triangle = elements[i].triangles;
+            TriangleList triangle = elements[i].triangles;
             if (checkClockwise(polygon2D)) elements[i].clockwise = true;
 
             int totalPolygonPoints = polygon2D.size();
@@ -170,12 +171,12 @@ void triangulatePolygons(map<int, ElementList2D>& layerMap) {
             trGenerator.setSegmentConstraint(segments);
             bool enforceQuality = false;
             trGenerator.Triangulate(enforceQuality);
-            Triangles triangles;
+            TriangleList triangles;
             for (FaceIterator fit = trGenerator.fbegin(); fit != trGenerator.fend(); ++fit) {
                 int vertexIdx1 = fit.Org();
                 int vertexIdx2 = fit.Dest();
                 int vertexIdx3 = fit.Apex();
-                triangles.push_back(Triplet{vertexIdx1, vertexIdx2, vertexIdx3});
+                triangles.push_back(Triangle{vertexIdx1, vertexIdx2, vertexIdx3});
             }
             elements[i].triangles = triangles; 
         }
@@ -205,7 +206,7 @@ void printLayerMap(const map<int, ElementList2D>& layerMap) {
             // Output the triangles
             cout << "[";
             for (size_t i = 0; i < element.triangles.size(); ++i) {
-                const Triplet& triplet = element.triangles[i];
+                const Triangle& triplet = element.triangles[i];
                 cout << "[" << triplet.x << ", " << triplet.y << ", " << triplet.z << "]";
                 if (i != element.triangles.size() - 1) {
                     cout << ", ";
@@ -254,7 +255,7 @@ map<int, ElementList3D> extrudePolygons(map<int, ElementList2D>& layerMap, doubl
         ElementList3D elementList3D;
         for (int i = 0; i < elementList2D.size(); i++) {
             Polygon2D polygon2D = elementList2D[i].polygon2D;
-            Triangles triangle = elementList2D[i].triangles;
+            TriangleList triangle = elementList2D[i].triangles;
             if (elementList2D[i].clockwise) {
                 reverse(polygon2D.begin(), polygon2D.end()); // Reverse if cw, since STL expects CCW points. Properly not necessary for PLY?
                 elementList2D[i].clockwise = false;
@@ -279,7 +280,7 @@ map<int, ElementList3D> extrudePolygons(map<int, ElementList2D>& layerMap, doubl
     return extrudedLayerMap;
 }
 
-void writePLY(const string& filename, const map<int, ElementList3D>& extrudedLayerMap) {
+void writePLY(const string& filename, const map<int, ElementList3D>& extrudedLayerMap, int layerNumber) {
     ofstream plyFile(filename);
     if (!plyFile.is_open()) {
         cerr << "Failed to open the file: " << filename << endl;
@@ -287,45 +288,42 @@ void writePLY(const string& filename, const map<int, ElementList3D>& extrudedLay
     }
 
     Polygon3D vertices;
-    Triangles faces;
+    TriangleList faces;
 
-    for (const auto& layer : extrudedLayerMap) {
-        for (const auto& element : layer.second) {
-            int baseIndex = vertices.size();
+    ElementList3D elementListAtLayerNumber = extrudedLayerMap.at(layerNumber);
+    for (const auto& element : elementListAtLayerNumber) {
+        int baseIndex = vertices.size();
 
-            // Add vertices for both top and bottom polygons
-            for (const auto& vertex : element.polygon3D) {
-                vertices.push_back(vertex);
-            }
+        // Add vertices for both top and bottom polygons
+        for (const auto& vertex : element.polygon3D) {
+            vertices.push_back(vertex);
+        }
 
-            // Add faces for the bottom and top polygons
-            for (const auto& triplet : element.triangles) {
-                faces.push_back({triplet.x + baseIndex, triplet.y + baseIndex, triplet.z + baseIndex});
-            }
+        // Add faces for the bottom and top polygons
+        for (const auto& triplet : element.triangles) {
+            faces.push_back({triplet.x + baseIndex, triplet.y + baseIndex, triplet.z + baseIndex});
         }
     }
 
     // Add side faces connecting top and bottom polygons
-    for (const auto& layer : extrudedLayerMap) {
-        int baseIndex1 = 0;
-        int baseIndex2 = 0;
-        for (int i = 0; i < layer.second.size(); i += 2) {
-            Element3D element1 = layer.second[i];
-            int numVertices = element1.polygon3D.size(); // should be same as element 2?
-            baseIndex2 = baseIndex1 + numVertices;
-            for (int j = 0; j < numVertices; j++) {
-                int next = (j + 1) % numVertices;
-                int bottom0 = baseIndex1 + j;
-                int bottom1 = baseIndex1 + next;
-                int top0 = baseIndex2 + j;
-                int top1 = baseIndex2 + next;
+    int baseIndex1 = 0;
+    int baseIndex2 = 0;
+    for (int i = 0; i < elementListAtLayerNumber.size(); i += 2) {
+        Element3D element1 = elementListAtLayerNumber[i];
+        int numVertices = element1.polygon3D.size(); // should be same as element 2?
+        baseIndex2 = baseIndex1 + numVertices;
+        for (int j = 0; j < numVertices; j++) {
+            int next = (j + 1) % numVertices;
+            int bottom0 = baseIndex1 + j;
+            int bottom1 = baseIndex1 + next;
+            int top0 = baseIndex2 + j;
+            int top1 = baseIndex2 + next;
 
-                // Side face as two triangles forming a rectangle
-                faces.push_back({bottom0, bottom1, top1}); // First triangle
-                faces.push_back({top1, top0, bottom0});    // Second triangle
-            }
-            baseIndex1 += 2 * numVertices;
+            // Side face as two triangles forming a rectangle
+            faces.push_back({bottom0, bottom1, top1}); // First triangle
+            faces.push_back({top1, top0, bottom0});    // Second triangle
         }
+        baseIndex1 += 2 * numVertices;
     }
 
     // Writing the PLY file
@@ -364,7 +362,11 @@ int main(int argc, char* argv[]) {
     
     map<int, ElementList3D> layerMap3D = extrudePolygons(layerMap, 0.0, 100.0);
     // printExtrudedLayerMap(layerMap3D);
-    writePLY("output.ply", layerMap3D);
+    for (const auto& layer: layerMap3D) {
+        string fileName = "Layer" + to_string(layer.first) + ".ply";
+
+        writePLY(fileName, layerMap3D, layer.first);
+    }
     delete gdsIIData;
     return 0;
 }
