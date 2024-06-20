@@ -256,7 +256,7 @@ map<int, ElementList3D> extrudePolygons(map<int, ElementList2D>& layerMap, doubl
             Polygon2D polygon2D = elementList2D[i].polygon2D;
             Triangles triangle = elementList2D[i].triangles;
             if (elementList2D[i].clockwise) {
-                reverse(polygon2D.begin(), polygon2D.end()); // Reverse if cw, since STL expects CCW points
+                reverse(polygon2D.begin(), polygon2D.end()); // Reverse if cw, since STL expects CCW points. Properly not necessary for PLY?
                 elementList2D[i].clockwise = false;
             }
             Element3D element3DMin;
@@ -265,8 +265,8 @@ map<int, ElementList3D> extrudePolygons(map<int, ElementList2D>& layerMap, doubl
             Polygon3D polygon3DMin = insertZ(polygon2D, zMin);
             Polygon3D polygon3DMax = insertZ(polygon2D, zMax);
 
-            element3DMin.polygon3D = polygon3DMin;
-            element3DMax.polygon3D = polygon3DMax;
+            element3DMin.polygon3D = polygon3DMin; // points_i_min
+            element3DMax.polygon3D = polygon3DMax; // points_i_max
             element3DMin.triangles = triangle;
             element3DMax.triangles = triangle;
             element3DMin.clockwise = false;
@@ -292,15 +292,43 @@ void writePLY(const string& filename, const map<int, ElementList3D>& extrudedLay
     for (const auto& layer : extrudedLayerMap) {
         for (const auto& element : layer.second) {
             int baseIndex = vertices.size();
+
+            // Add vertices for both top and bottom polygons
             for (const auto& vertex : element.polygon3D) {
                 vertices.push_back(vertex);
             }
+
+            // Add faces for the bottom and top polygons
             for (const auto& triplet : element.triangles) {
                 faces.push_back({triplet.x + baseIndex, triplet.y + baseIndex, triplet.z + baseIndex});
             }
         }
     }
 
+    // Add side faces connecting top and bottom polygons
+    for (const auto& layer : extrudedLayerMap) {
+        int baseIndex1 = 0;
+        int baseIndex2 = 0;
+        for (int i = 0; i < layer.second.size(); i += 2) {
+            Element3D element1 = layer.second[i];
+            int numVertices = element1.polygon3D.size(); // should be same as element 2?
+            baseIndex2 = baseIndex1 + numVertices;
+            for (int j = 0; j < numVertices; j++) {
+                int next = (j + 1) % numVertices;
+                int bottom0 = baseIndex1 + j;
+                int bottom1 = baseIndex1 + next;
+                int top0 = baseIndex2 + j;
+                int top1 = baseIndex2 + next;
+
+                // Side face as two triangles forming a rectangle
+                faces.push_back({bottom0, bottom1, top1}); // First triangle
+                faces.push_back({top1, top0, bottom0});    // Second triangle
+            }
+            baseIndex1 += 2 * numVertices;
+        }
+    }
+
+    // Writing the PLY file
     plyFile << "ply" << endl;
     plyFile << "format ascii 1.0" << endl;
     plyFile << "element vertex " << vertices.size() << endl;
@@ -321,53 +349,6 @@ void writePLY(const string& filename, const map<int, ElementList3D>& extrudedLay
 
     plyFile.close();
 }
-
-// void printExtrudedLayerMap(const map<int, ElementList3D>& layerMap) {
-//     cout << "extruded_layers = {" << endl;
-//     for (auto it = layerMap.begin(); it != layerMap.end(); ++it) {
-//         int layerNumber = it->first;
-//         const ElementList3D& elements = it->second;
-//
-//         cout << "  " << layerNumber << " : [" << endl;
-//         for (const auto& element : elements) {
-//             cout << "    ([";
-//
-//             // Output the polygon vertices
-//             for (size_t i = 0; i < element.polygon3D.size(); ++i) {
-//                 const Vertex3D& vertex = element.polygon3D[i];
-//                 cout << "[" << vertex.x << ", " << vertex.y << ", " << vertex.z << "]";
-//                 if (i != element.polygon3D.size() - 1) {
-//                     cout << ", ";
-//                 }
-//             }
-//             cout << "], ";
-//
-//             // Output the triangles
-//             cout << "[";
-//             for (size_t i = 0; i < element.triangles.size(); ++i) {
-//                 const Triplet& triplet = element.triangles[i];
-//                 cout << "[" << triplet.x << ", " << triplet.y << ", " << triplet.z << "]";
-//                 if (i != element.triangles.size() - 1) {
-//                     cout << ", ";
-//                 }
-//             }
-//             cout << "], ";
-//
-//             // Output the clockwise flag
-//             cout << (element.clockwise ? "true" : "false") << ")";
-//             if (&element != &elements.back()) {
-//                 cout << ", ";
-//             }
-//             cout << endl;
-//         }
-//         cout << "  ]";
-//         if (next(it) != layerMap.end()) {
-//             cout << ", ";
-//         }
-//         cout << endl;
-//     }
-//     cout << "}" << endl;
-// }
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
