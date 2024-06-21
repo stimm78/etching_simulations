@@ -183,6 +183,7 @@ for layer_number, polygons in layers.items():
         # triangulate: compute triangles to fill polygon
         point_array = np.arange(num_polygon_points)
         edges = np.transpose(np.stack((point_array, np.roll(point_array, 1))))
+        print(edges)
         if use_holes:
             triangles = triangle.triangulate(dict(vertices=polygon,
                                                   segments=edges,
@@ -199,77 +200,38 @@ for layer_number, polygons in layers.items():
         num_triangles[layer_number] += num_polygon_points*2 + \
                                        len(triangles['triangles'])*2
         polygons[index] = (polygon, triangles, clockwise)
-def print_layers(layers):
-    print("layers = {")
-    for layer_number, elements in layers.items():
-        print(f"  {layer_number} : [")
-        for i, (polygon, triangles, clockwise) in enumerate(elements):
-            print("    ([")
 
-            # Print vertices
-            for j, vertex in enumerate(polygon):
-                print(f"      [{vertex[0]}, {vertex[1]}]", end="")
-                if j < len(polygon) - 1:
-                    print(",")
-                else:
-                    print()
+"""
+At this point, "layers" is as follows:
 
-            print("    ], [")
+layers = {
+   0 : [ ([[x1, y1], [x2, y2], ...],
+          {'vertices': [[x1, y1], ...], 'triangles': [[0, 1, 2], ...], ...},
+          clockwise), ... ]
+   1 : [ ... ]
+   2 : [ ... ]
+   ...
+}
 
-            # Print triangles, if they exist
-            if triangles is not None and 'triangles' in triangles:
-                for j, triangle in enumerate(triangles['triangles']):
-                    print(f"      [{triangle[0]}, {triangle[1]}, {triangle[2]}]", end="")
-                    if j < len(triangles['triangles']) - 1:
-                        print(",")
-                    else:
-                        print()
-            else:
-                print("      # No triangles")
+Each dictionary key is a GDSII layer number (0-255), and the value of the
+dictionary at that key (if it exists; keys were only created for layers with
+geometry) is a list of polygons in that GDSII layer. Each polygon has 3 parts:
+First, a list of vertices, as before. Second, a dictionary with triangulation
+information: the 'vertices' element contains vertex information stored the
+same way as the main polygon vertices, and the 'triangles' element is a list
+of which vertices correspond to which triangle (in counterclockwise order).
+Third and finally, a boolean value that indicates whether the polygon was
+defined clockwise (so that the STL triangles are oriented correctly).
+"""
 
-            print(f"    ], {str(clockwise).lower()})", end="")
-            if i < len(elements) - 1:
-                print(",")
-            print()
-        print("  ]", end="")
-        if layer_number != list(layers.keys())[-1]:
-            print(",")
-        print()
-    print("}")
+########## EXTRUSION ##########################################################
 
-# Call the print function
-# print_layers(layers)# """
+# Finally, now that we have polygon boundaries and triangulations, we can
+# write it to an STL file. To make this fast (given there could be tens of
+# thousands of triangles), we use the numpy-stl library, which uses numpy
+# for somewhat accelerated vector math. See the documentation at
+# (https://numpy-stl.readthedocs.io/en/latest/)
 
-# At this point, "layers" is as follows:
-#
-# layers = {
-#    0 : [ ([[x1, y1], [x2, y2], ...],
-#           {'vertices': [[x1, y1], ...], 'triangles': [[0, 1, 2], ...], ...},
-#           clockwise), ... ]
-#    1 : [ ... ]
-#    2 : [ ... ]
-#    ...
-# }
-#
-# Each dictionary key is a GDSII layer number (0-255), and the value of the
-# dictionary at that key (if it exists; keys were only created for layers with
-# geometry) is a list of polygons in that GDSII layer. Each polygon has 3 parts:
-# First, a list of vertices, as before. Second, a dictionary with triangulation
-# information: the 'vertices' element contains vertex information stored the
-# same way as the main polygon vertices, and the 'triangles' element is a list
-# of which vertices correspond to which triangle (in counterclockwise order).
-# Third and finally, a boolean value that indicates whether the polygon was
-# defined clockwise (so that the STL triangles are oriented correctly).
-# """
-#
-# ########## EXTRUSION ##########################################################
-#
-# # Finally, now that we have polygon boundaries and triangulations, we can
-# # write it to an STL file. To make this fast (given there could be tens of
-# # thousands of triangles), we use the numpy-stl library, which uses numpy
-# # for somewhat accelerated vector math. See the documentation at
-# # (https://numpy-stl.readthedocs.io/en/latest/)
-#
 print('Extruding polygons and writing to files...')
 
 # loop through all layers

@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -5,13 +6,12 @@
 #include <string>
 #include <utility>
 #include <algorithm>
+#include "include/Triangulation.h"
 #include "libGDSII.h"
-#include "triangle/tpp_interface.hpp"
+#include "include/CDT.h"
 
 using namespace std;
 using namespace libGDSII;
-using namespace tpp;
-using Point = tpp::Delaunay::Point;
 
 struct Vertex2D {
     double x, y;
@@ -24,9 +24,7 @@ struct Triangle {
 };
 
 typedef vector<Vertex2D> Polygon2D; // Polygon2D is a vector of vertices Vertex2D{x, y}
-typedef vector<Polygon2D> PolygonList2D; // PolygonList2D is a vector of Polygon2Ds
 typedef vector<Vertex3D> Polygon3D;// Polygon3D is a vector of vertices Vertex3D{x, y, z}
-typedef vector<Polygon3D> PolygonList3D;// Polygon3D is a vector of vertices Polygon3Ds
 typedef vector<Triangle> TriangleList; 
 
 struct Element2D { // Element is a struct of the polygon, its triangulation, and whether it is clockwise
@@ -108,79 +106,8 @@ map<int, ElementList2D> layerMapToElementList(map<int, PolygonList>& layerMap) {
         }
         layerMap2D[layerNumber] = elementList;
     }
+
     return layerMap2D;
-}
-
-/* Checks clockwise configuration of points in polygon using method linked here:
- * https://stackoverflow.com/questions/1165647/how-to-determine-if-a-list-of-polygon-points-are-in-clockwise-order
- * Not sure if this is necessary for PLY files */
-
-bool checkClockwise(Polygon2D polygon) {
-    double area = 0;
-    for (int i = 0; i < polygon.size(); i++) {
-        Vertex2D v1 = polygon[i];
-        Vertex2D v2 = polygon[(i+1) % polygon.size()];
-        area += (v2.x - v1.x) * (v2.y + v1.y);
-    }
-    return area > 0;
-}
-
-
-/* Constained Delanauy triangulation of polygons. Constraints are the outside edges of the polygon.*/
-void triangulatePolygons(map<int, ElementList2D>& layerMap) {
-
-    map<int, ElementList2D>::iterator it;
-    for (it = layerMap.begin(); it != layerMap.end(); it++) {
-        int layerNumber = it->first;
-        ElementList2D& elements = it->second;
-
-        for (int i = 0; i < elements.size(); i++) {
-            Polygon2D polygon2D = elements[i].polygon2D;
-            TriangleList triangle = elements[i].triangles;
-            if (checkClockwise(polygon2D)) elements[i].clockwise = true;
-
-            int totalPolygonPoints = polygon2D.size();
-
-            vector<int> pointVector; // pointVector is [0, 1, 2, ... polygons[i].size()]
-            for (int j = 0; j < totalPolygonPoints; j++) {
-                pointVector.push_back(j); 
-            } 
-
-            vector<int> rotated_array(totalPolygonPoints); // Shift all elements right, wrap last element (there could be some stl algo for this, check later)
-            for (int j = 0; j < totalPolygonPoints; j++) {
-                rotated_array[j] = pointVector[(j + 1) % totalPolygonPoints]; 
-            }
-
-            vector<pair<int, int>> edges(totalPolygonPoints); // Connects pairs of vertices to make edges
-            for (int j = 0; j < totalPolygonPoints; j++) {
-                edges[j] = make_pair(pointVector[j], rotated_array[j]); 
-            }
-
-            vector<Point> delaunayInput; // Convert vertices to Delaunay Points
-            for (const auto& vertex : polygon2D) {
-                delaunayInput.push_back(Point(vertex.x, vertex.y));
-            }
-
-            vector<Point> segments; // Convert edges to Delaunay segments
-            for (const auto& edge : edges) {
-                segments.push_back(delaunayInput[edge.first]);
-                segments.push_back(delaunayInput[edge.second]);
-            }
-            // Triangulating time!
-            Delaunay trGenerator(delaunayInput);
-            trGenerator.setSegmentConstraint(segments);
-            bool enforceQuality = false;
-            trGenerator.Triangulate(enforceQuality);
-            TriangleList triangles;
-            for (FaceIterator fit = trGenerator.fbegin(); fit != trGenerator.fend(); ++fit) {
-                int vertexIdx1 = fit.Org();
-                int vertexIdx2 = fit.Dest();
-                int vertexIdx3 = fit.Apex();
-                triangles.push_back(Triangle{vertexIdx1, vertexIdx2, vertexIdx3});
-            }
-            elements[i].triangles = triangles; 
-        }
-    }
 }
 
 void printLayerMap(const map<int, ElementList2D>& layerMap) {
@@ -229,6 +156,112 @@ void printLayerMap(const map<int, ElementList2D>& layerMap) {
     }
     cout << "}" << endl;
 
+}
+
+
+/* Checks clockwise configuration of points in polygon using method linked here:
+ * https://stackoverflow.com/questions/1165647/how-to-determine-if-a-list-of-polygon-points-are-in-clockwise-order
+ * Not sure if this is necessary for PLY files, but generally useful */
+bool checkClockwise(Polygon2D polygon) {
+    double area = 0;
+    for (int i = 0; i < polygon.size(); i++) {
+        Vertex2D v1 = polygon[i];
+        Vertex2D v2 = polygon[(i+1) % polygon.size()];
+        area += (v2.x - v1.x) * (v2.y + v1.y);
+    }
+    return area > 0;
+}
+
+struct CustomPoint2D
+{
+    double data[2];
+};
+ 
+struct CustomEdge
+{
+    pair<int, int> vertices;
+};
+
+/* Constrained Delaunay triangulation of polygons. Constraints are the outside edges of the polygon.*/
+void triangulatePolygons(map<int, ElementList2D>& layerMap) {
+
+    for (auto& layerPair : layerMap) {
+
+        ElementList2D& elements = layerPair.second;
+        for (Element2D& element : elements) {
+            Polygon2D& polygon2D = element.polygon2D;
+            TriangleList& triangles = element.triangles;
+
+            if (checkClockwise(polygon2D)) {
+                element.clockwise = true;
+            }
+
+            int totalPolygonPoints = polygon2D.size();
+
+            // Convert vertices to CDT Points
+            vector<CustomPoint2D> points; 
+            for (const auto& vertex : polygon2D) {
+                CustomPoint2D point;
+                point.data[0] = vertex.x;
+                point.data[1] = vertex.y;
+                points.push_back(point);
+            }
+
+            // std::cout << "Contents of vertices:" << std::endl; // DEBUGGING
+            // for (const auto& point: points) {
+            //     std::cout << "(" << point.data[0] << ", " << point.data[1] << ")" << std::endl;
+            // }
+
+            vector<pair<int, int>> boundarySegments(totalPolygonPoints);
+
+            // Create edges for the polygon
+            for (int j = 0; j < totalPolygonPoints; j++) {
+                boundarySegments[j] = make_pair(j, (j + 1) % totalPolygonPoints);
+            }
+
+            // Convert edges to Delaunay segments
+            vector<CustomEdge> edges;
+            for (const auto& edge : boundarySegments) {
+                CustomEdge customEdge;
+                customEdge.vertices.first = edge.first;
+                customEdge.vertices.second = edge.second;
+                edges.push_back(customEdge); 
+            }
+            // std::cout << "Contents of edges:" << std::endl; // DEBUGGING
+            // for (const auto& edge : edges) {
+            //     std::cout << "(" << edge.vertices.first << ", " << edge.vertices.second << ")" << std::endl;
+            // }
+
+            CDT::Triangulation<double> cdt(CDT::VertexInsertionOrder::AsProvided);
+            auto test = CDT::VertexInsertionOrder::AsProvided;
+            cdt.insertVertices(
+                points.begin(),
+                points.end(),
+                [](const CustomPoint2D& p) { return p.data[0]; },
+                [](const CustomPoint2D& p) { return p.data[1]; }
+            );
+
+            cdt.insertEdges(
+                edges.begin(),
+                edges.end(),
+                [](const CustomEdge& e) { return e.vertices.first; },
+                [](const CustomEdge& e) { return e.vertices.second; }
+            );
+
+            cdt.eraseOuterTrianglesAndHoles();
+
+            TriangleList newTriangles;
+            // std::cout << "Triangles: " << endl; // DEBUGGING
+            for (const auto& tri : cdt.triangles) {
+                int a = tri.vertices[0];
+                int b = tri.vertices[1];
+                int c = tri.vertices[2];
+                // std::cout << "(" << a << "," << b << "," << c << ")" << endl; // DEBUGGING
+                newTriangles.push_back({a, b, c});
+            }
+            triangles = newTriangles;
+        }
+    }
 }
 
 Polygon3D insertZ(const Polygon2D& polygon2D, double z) {
@@ -348,6 +381,7 @@ void writePLY(const string& filename, const map<int, ElementList3D>& extrudedLay
     plyFile.close();
 }
 
+
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         cerr << "Usage: " << argv[0] << " <GDS file>" << endl;
@@ -359,12 +393,11 @@ int main(int argc, char* argv[]) {
     map<int, PolygonList> layerPLMap= extractPolygons(gdsIIData);
     map<int, ElementList2D> layerMap = layerMapToElementList(layerPLMap);
     triangulatePolygons(layerMap);
-    
+    // printLayerMap(layerMap);
+
     map<int, ElementList3D> layerMap3D = extrudePolygons(layerMap, 0.0, 100.0);
-    // printExtrudedLayerMap(layerMap3D);
     for (const auto& layer: layerMap3D) {
         string fileName = "Layer" + to_string(layer.first) + ".ply";
-
         writePLY(fileName, layerMap3D, layer.first);
     }
     delete gdsIIData;
