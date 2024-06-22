@@ -1,13 +1,22 @@
 cmake_minimum_required(VERSION 3.18)
 project("GDS")
-add_executable(gds "gds_to_ply.cpp")
 
-list(APPEND CMAKE_MODULE_PATH "/usr/local/lib64/cmake/OpenVDB")
-find_package(OpenVDB REQUIRED)
-target_link_libraries(gds PUBLIC OpenVDB::openvdb)
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Include and link directories for custom libraries
 include_directories(/usr/local/include)
 link_directories(/usr/local/lib)
+
+# Add source files
+set(SOURCES
+    gds_to_ply.cpp
+)
+
+# Add executable
+add_executable(gds ${SOURCES})
+
+# Link custom GDSII library
 target_link_libraries(gds PUBLIC -l:libGDSII.a)
-# target_link_libraries(test PUBLIC -l:libGDSII.a)
 

@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/gds.dir/gds_to_ply.cpp.o CMakeFiles/gds.dir/triangle/tpp_assert.cpp.o CMakeFiles/gds.dir/triangle/tpp_impl.cpp.o -o gds   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib -l:libGDSII.a 

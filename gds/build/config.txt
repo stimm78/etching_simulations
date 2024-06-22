@@ -1,4 +1,0 @@
-vdb_tool 10.6.1
--read files=output.ply grids=* delayed=true
--mesh2ls dim=256 voxel=0.0 width=3.0 geo=0 vdb=-1 keep=false name=
--write files=output.vdb,config.txt geo=0 vdb=* keep=false codec= bits=32 dither=false absolute=true tolerance=-1 stats= checksum=
