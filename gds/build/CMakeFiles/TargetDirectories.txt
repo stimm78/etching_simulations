@@ -1,3 +1,0 @@
-/home/dtseng/Downloads/research/etching_simulations/gds/build/CMakeFiles/gds.dir
-/home/dtseng/Downloads/research/etching_simulations/gds/build/CMakeFiles/edit_cache.dir
-/home/dtseng/Downloads/research/etching_simulations/gds/build/CMakeFiles/rebuild_cache.dir

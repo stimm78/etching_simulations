@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dtseng/Downloads/research/etching_simulations/src
+CMAKE_SOURCE_DIR = /home/dtseng/Downloads/research/etching_simulations/vdbtests
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dtseng/Downloads/research/etching_simulations/src/build
+CMAKE_BINARY_DIR = /home/dtseng/Downloads/research/etching_simulations/vdbtests/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dtseng/Downloads/research/etching_simulations/src/build/CMakeFiles /home/dtseng/Downloads/research/etching_simulations/src/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dtseng/Downloads/research/etching_simulations/vdbtests/build/CMakeFiles /home/dtseng/Downloads/research/etching_simulations/vdbtests/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dtseng/Downloads/research/etching_simulations/src/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dtseng/Downloads/research/etching_simulations/vdbtests/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,65 +117,78 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named gds
+# Target rules for targets named cube
 
 # Build rule for target.
-gds: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gds
-.PHONY : gds
+cube: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cube
+.PHONY : cube
 
 # fast build rule for target.
-gds/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/build
-.PHONY : gds/fast
+cube/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/build
+.PHONY : cube/fast
 
-GDSProcessor.o: GDSProcessor.cpp.o
-.PHONY : GDSProcessor.o
+#=============================================================================
+# Target rules for targets named etch
 
-# target to build an object file
-GDSProcessor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/GDSProcessor.cpp.o
-.PHONY : GDSProcessor.cpp.o
+# Build rule for target.
+etch: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 etch
+.PHONY : etch
 
-GDSProcessor.i: GDSProcessor.cpp.i
-.PHONY : GDSProcessor.i
+# fast build rule for target.
+etch/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/etch.dir/build.make CMakeFiles/etch.dir/build
+.PHONY : etch/fast
 
-# target to preprocess a source file
-GDSProcessor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/GDSProcessor.cpp.i
-.PHONY : GDSProcessor.cpp.i
-
-GDSProcessor.s: GDSProcessor.cpp.s
-.PHONY : GDSProcessor.s
-
-# target to generate assembly for a file
-GDSProcessor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/GDSProcessor.cpp.s
-.PHONY : GDSProcessor.cpp.s
-
-main.o: main.cpp.o
-.PHONY : main.o
+cube.o: cube.cpp.o
+.PHONY : cube.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/main.cpp.o
-.PHONY : main.cpp.o
+cube.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/cube.cpp.o
+.PHONY : cube.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+cube.i: cube.cpp.i
+.PHONY : cube.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/main.cpp.i
-.PHONY : main.cpp.i
+cube.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/cube.cpp.i
+.PHONY : cube.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+cube.s: cube.cpp.s
+.PHONY : cube.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/main.cpp.s
-.PHONY : main.cpp.s
+cube.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/cube.cpp.s
+.PHONY : cube.cpp.s
+
+etch.o: etch.cpp.o
+.PHONY : etch.o
+
+# target to build an object file
+etch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/etch.dir/build.make CMakeFiles/etch.dir/etch.cpp.o
+.PHONY : etch.cpp.o
+
+etch.i: etch.cpp.i
+.PHONY : etch.i
+
+# target to preprocess a source file
+etch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/etch.dir/build.make CMakeFiles/etch.dir/etch.cpp.i
+.PHONY : etch.cpp.i
+
+etch.s: etch.cpp.s
+.PHONY : etch.s
+
+# target to generate assembly for a file
+etch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/etch.dir/build.make CMakeFiles/etch.dir/etch.cpp.s
+.PHONY : etch.cpp.s
 
 # Help Target
 help:
@@ -185,13 +198,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... gds"
-	@echo "... GDSProcessor.o"
-	@echo "... GDSProcessor.i"
-	@echo "... GDSProcessor.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... cube"
+	@echo "... etch"
+	@echo "... cube.o"
+	@echo "... cube.i"
+	@echo "... cube.s"
+	@echo "... etch.o"
+	@echo "... etch.i"
+	@echo "... etch.s"
 .PHONY : help
 
 

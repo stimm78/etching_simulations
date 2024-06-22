@@ -8,8 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/dtseng/Downloads/research/etching_simulations/src/GDSProcessor.cpp" "CMakeFiles/gds.dir/GDSProcessor.cpp.o" "gcc" "CMakeFiles/gds.dir/GDSProcessor.cpp.o.d"
-  "/home/dtseng/Downloads/research/etching_simulations/src/main.cpp" "CMakeFiles/gds.dir/main.cpp.o" "gcc" "CMakeFiles/gds.dir/main.cpp.o.d"
+  "/home/dtseng/Downloads/research/etching_simulations/src/gds_data.cpp" "CMakeFiles/gds.dir/gds_data.cpp.o" "gcc" "CMakeFiles/gds.dir/gds_data.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
