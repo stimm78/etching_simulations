@@ -71,7 +71,6 @@ map<int, PolygonList> extractPolygons(GDSIIData* gdsIIData) {
     return layerMap;
 }
 
-
 /* Converts polygons in layerMap to Vertex2D representation.
  * A layerMap is the following:
  * layerMap2D = {
@@ -207,11 +206,6 @@ void triangulatePolygons(map<int, ElementList2D>& layerMap) {
                 points.push_back(point);
             }
 
-            // std::cout << "Contents of vertices:" << std::endl; // DEBUGGING
-            // for (const auto& point: points) {
-            //     std::cout << "(" << point.data[0] << ", " << point.data[1] << ")" << std::endl;
-            // }
-
             vector<pair<int, int>> boundarySegments(totalPolygonPoints);
 
             // Create edges for the polygon
@@ -227,10 +221,6 @@ void triangulatePolygons(map<int, ElementList2D>& layerMap) {
                 customEdge.vertices.second = edge.second;
                 edges.push_back(customEdge); 
             }
-            // std::cout << "Contents of edges:" << std::endl; // DEBUGGING
-            // for (const auto& edge : edges) {
-            //     std::cout << "(" << edge.vertices.first << ", " << edge.vertices.second << ")" << std::endl;
-            // }
 
             CDT::Triangulation<double> cdt(CDT::VertexInsertionOrder::AsProvided);
             auto test = CDT::VertexInsertionOrder::AsProvided;
@@ -251,12 +241,10 @@ void triangulatePolygons(map<int, ElementList2D>& layerMap) {
             cdt.eraseOuterTrianglesAndHoles();
 
             TriangleList newTriangles;
-            // std::cout << "Triangles: " << endl; // DEBUGGING
             for (const auto& tri : cdt.triangles) {
                 int a = tri.vertices[0];
                 int b = tri.vertices[1];
                 int c = tri.vertices[2];
-                // std::cout << "(" << a << "," << b << "," << c << ")" << endl; // DEBUGGING
                 newTriangles.push_back({a, b, c});
             }
             triangles = newTriangles;
@@ -289,10 +277,7 @@ map<int, ElementList3D> extrudePolygons(map<int, ElementList2D>& layerMap, doubl
         for (int i = 0; i < elementList2D.size(); i++) {
             Polygon2D polygon2D = elementList2D[i].polygon2D;
             TriangleList triangle = elementList2D[i].triangles;
-            if (elementList2D[i].clockwise) {
-                reverse(polygon2D.begin(), polygon2D.end()); // Reverse if cw, since STL expects CCW points. Properly not necessary for PLY?
-                elementList2D[i].clockwise = false;
-            }
+            
             Element3D element3DMin;
             Element3D element3DMax;
 
@@ -394,7 +379,7 @@ int main(int argc, char* argv[]) {
     map<int, ElementList2D> layerMap = layerMapToElementList(layerPLMap);
     triangulatePolygons(layerMap);
     // printLayerMap(layerMap);
-
+    
     map<int, ElementList3D> layerMap3D = extrudePolygons(layerMap, 0.0, 100.0);
     for (const auto& layer: layerMap3D) {
         string fileName = "Layer" + to_string(layer.first) + ".ply";
