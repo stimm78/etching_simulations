@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/gds.dir/gds_to_ply.cpp.o -o gds   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib -l:libGDSII.a 
+/usr/bin/c++ CMakeFiles/gds.dir/main.cpp.o CMakeFiles/gds.dir/GDSProcessor.cpp.o -o gds   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib -l:libGDSII.a 

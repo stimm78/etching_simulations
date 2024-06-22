@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dtseng/Downloads/research/etching_simulations/gds_v2
+CMAKE_SOURCE_DIR = /home/dtseng/Downloads/research/etching_simulations/gds
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dtseng/Downloads/research/etching_simulations/gds_v2/build
+CMAKE_BINARY_DIR = /home/dtseng/Downloads/research/etching_simulations/gds/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dtseng/Downloads/research/etching_simulations/gds_v2/build/CMakeFiles /home/dtseng/Downloads/research/etching_simulations/gds_v2/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dtseng/Downloads/research/etching_simulations/gds/build/CMakeFiles /home/dtseng/Downloads/research/etching_simulations/gds/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dtseng/Downloads/research/etching_simulations/gds_v2/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dtseng/Downloads/research/etching_simulations/gds/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,29 +129,53 @@ gds/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/build
 .PHONY : gds/fast
 
-gds_to_ply.o: gds_to_ply.cpp.o
-.PHONY : gds_to_ply.o
+GDSProcessor.o: GDSProcessor.cpp.o
+.PHONY : GDSProcessor.o
 
 # target to build an object file
-gds_to_ply.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_to_ply.cpp.o
-.PHONY : gds_to_ply.cpp.o
+GDSProcessor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/GDSProcessor.cpp.o
+.PHONY : GDSProcessor.cpp.o
 
-gds_to_ply.i: gds_to_ply.cpp.i
-.PHONY : gds_to_ply.i
+GDSProcessor.i: GDSProcessor.cpp.i
+.PHONY : GDSProcessor.i
 
 # target to preprocess a source file
-gds_to_ply.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_to_ply.cpp.i
-.PHONY : gds_to_ply.cpp.i
+GDSProcessor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/GDSProcessor.cpp.i
+.PHONY : GDSProcessor.cpp.i
 
-gds_to_ply.s: gds_to_ply.cpp.s
-.PHONY : gds_to_ply.s
+GDSProcessor.s: GDSProcessor.cpp.s
+.PHONY : GDSProcessor.s
 
 # target to generate assembly for a file
-gds_to_ply.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/gds_to_ply.cpp.s
-.PHONY : gds_to_ply.cpp.s
+GDSProcessor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/GDSProcessor.cpp.s
+.PHONY : GDSProcessor.cpp.s
+
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gds.dir/build.make CMakeFiles/gds.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -162,9 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... gds"
-	@echo "... gds_to_ply.o"
-	@echo "... gds_to_ply.i"
-	@echo "... gds_to_ply.s"
+	@echo "... GDSProcessor.o"
+	@echo "... GDSProcessor.i"
+	@echo "... GDSProcessor.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

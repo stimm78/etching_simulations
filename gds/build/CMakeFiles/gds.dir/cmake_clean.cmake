@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/gds.dir/gds_to_ply.cpp.o"
-  "CMakeFiles/gds.dir/gds_to_ply.cpp.o.d"
+  "CMakeFiles/gds.dir/GDSProcessor.cpp.o"
+  "CMakeFiles/gds.dir/GDSProcessor.cpp.o.d"
+  "CMakeFiles/gds.dir/main.cpp.o"
+  "CMakeFiles/gds.dir/main.cpp.o.d"
   "gds"
   "gds.pdb"
 )

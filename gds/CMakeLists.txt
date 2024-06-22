@@ -11,7 +11,8 @@ link_directories(/usr/local/lib)
 
 # Add source files
 set(SOURCES
-    gds_to_ply.cpp
+    main.cpp
+    GDSProcessor.cpp
 )
 
 # Add executable

@@ -1,46 +1,6 @@
-#include <cmath>
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <map>
-#include <string>
-#include <utility>
-#include <algorithm>
-#include "include/Triangulation.h"
-#include "libGDSII.h"
-#include "include/CDT.h"
+// GDSProcessor.cpp
 
-using namespace std;
-using namespace libGDSII;
-
-// Struct definitions for vertices and triangles
-struct Vertex2D {
-    double x, y;
-};
-struct Vertex3D {
-    double x, y, z;
-};
-struct Triangle { 
-    int x, y, z;
-};
-
-typedef vector<Vertex2D> Polygon2D;
-typedef vector<Vertex3D> Polygon3D;
-typedef vector<Triangle> TriangleList; 
-
-struct Element2D { 
-    Polygon2D polygon2D;
-    TriangleList triangles; 
-    bool clockwise;
-};
-struct Element3D { 
-    Polygon3D polygon3D;
-    TriangleList triangles; 
-    bool clockwise;
-};
-
-typedef vector<Element2D> ElementList2D;
-typedef vector<Element3D> ElementList3D;
+#include "GDSProcessor.h"
 
 // Reads GDS file and returns its data
 GDSIIData* readGDS(const char* gdsFileName) {
@@ -94,14 +54,6 @@ bool checkClockwise(Polygon2D polygon) {
     }
     return area > 0;
 }
-
-struct CustomPoint2D {
-    double data[2];
-};
-
-struct CustomEdge {
-    pair<int, int> vertices;
-};
 
 // Performs constrained Delaunay triangulation of polygons
 void triangulatePolygons(map<int, ElementList2D>& layerMap) {
@@ -179,7 +131,7 @@ map<int, ElementList3D> extrudePolygons(map<int, ElementList2D>& layerMap, doubl
     return extrudedLayerMap;
 }
 
-// Writes the extruded polygons to a PLY file
+// Writes the extruded polygons on a specific layer to a PLY file
 void writePLY(const string& filename, const map<int, ElementList3D>& extrudedLayerMap, int layerNumber) {
     ofstream plyFile(filename);
     if (!plyFile.is_open()) {
@@ -241,26 +193,5 @@ void writePLY(const string& filename, const map<int, ElementList3D>& extrudedLay
     }
 
     plyFile.close();
-}
-
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        cerr << "Usage: " << argv[0] << " <GDS file>" << endl;
-        return 1;
-    }
-
-    const char* gdsFileName = argv[1];
-    GDSIIData* gdsIIData = readGDS(gdsFileName);
-    map<int, PolygonList> layerPLMap = extractPolygons(gdsIIData);
-    map<int, ElementList2D> layerMap = layerMapToElementList(layerPLMap);
-    triangulatePolygons(layerMap);
-
-    map<int, ElementList3D> layerMap3D = extrudePolygons(layerMap, 0.0, 100.0);
-    for (const auto& layer : layerMap3D) {
-        string fileName = "Layer" + to_string(layer.first) + ".ply";
-        writePLY(fileName, layerMap3D, layer.first);
-    }
-    delete gdsIIData;
-    return 0;
 }
 

@@ -1,7 +1,8 @@
-CMakeFiles/gds.dir/gds_to_ply.cpp.o: \
- /home/dtseng/Downloads/research/etching_simulations/gds/gds_to_ply.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/14/iostream \
- /usr/include/c++/14/bits/requires_hosted.h \
+CMakeFiles/gds.dir/main.cpp.o: \
+ /home/dtseng/Downloads/research/etching_simulations/gds/main.cpp \
+ /usr/include/stdc-predef.h \
+ /home/dtseng/Downloads/research/etching_simulations/gds/GDSProcessor.h \
+ /usr/include/c++/14/iostream /usr/include/c++/14/bits/requires_hosted.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/os_defines.h \
@@ -142,8 +143,7 @@ CMakeFiles/gds.dir/gds_to_ply.cpp.o: \
  /usr/include/c++/14/bits/node_handle.h \
  /usr/include/c++/14/bits/stl_map.h \
  /usr/include/c++/14/bits/stl_multimap.h \
- /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/utility \
- /usr/include/c++/14/bits/stl_relops.h \
+ /usr/include/c++/14/bits/erase_if.h \
  /home/dtseng/Downloads/research/etching_simulations/gds/include/Triangulation.h \
  /home/dtseng/Downloads/research/etching_simulations/gds/include/CDTUtils.h \
  /usr/include/c++/14/algorithm /usr/include/c++/14/bits/stl_algo.h \
@@ -183,6 +183,7 @@ CMakeFiles/gds.dir/gds_to_ply.cpp.o: \
  /usr/include/c++/14/bits/unordered_set.h \
  /home/dtseng/Downloads/research/etching_simulations/gds/include/CDTUtils.hpp \
  /home/dtseng/Downloads/research/etching_simulations/gds/include/predicates.h \
+ /usr/include/c++/14/utility /usr/include/c++/14/bits/stl_relops.h \
  /usr/include/c++/14/numeric /usr/include/c++/14/bits/stl_numeric.h \
  /usr/include/c++/14/pstl/glue_numeric_defs.h \
  /home/dtseng/Downloads/research/etching_simulations/gds/include/LocatorKDTree.h \

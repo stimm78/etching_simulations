@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dtseng/Downloads/research/etching_simulations/gds_v2
+CMAKE_SOURCE_DIR = /home/dtseng/Downloads/research/etching_simulations/gds
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dtseng/Downloads/research/etching_simulations/gds_v2/build
+CMAKE_BINARY_DIR = /home/dtseng/Downloads/research/etching_simulations/gds/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/gds.dir/depend.make
@@ -69,31 +69,47 @@ include CMakeFiles/gds.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/gds.dir/flags.make
 
-CMakeFiles/gds.dir/gds_to_ply.cpp.o: CMakeFiles/gds.dir/flags.make
-CMakeFiles/gds.dir/gds_to_ply.cpp.o: /home/dtseng/Downloads/research/etching_simulations/gds_v2/gds_to_ply.cpp
-CMakeFiles/gds.dir/gds_to_ply.cpp.o: CMakeFiles/gds.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dtseng/Downloads/research/etching_simulations/gds_v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gds.dir/gds_to_ply.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gds.dir/gds_to_ply.cpp.o -MF CMakeFiles/gds.dir/gds_to_ply.cpp.o.d -o CMakeFiles/gds.dir/gds_to_ply.cpp.o -c /home/dtseng/Downloads/research/etching_simulations/gds_v2/gds_to_ply.cpp
+CMakeFiles/gds.dir/main.cpp.o: CMakeFiles/gds.dir/flags.make
+CMakeFiles/gds.dir/main.cpp.o: /home/dtseng/Downloads/research/etching_simulations/gds/main.cpp
+CMakeFiles/gds.dir/main.cpp.o: CMakeFiles/gds.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dtseng/Downloads/research/etching_simulations/gds/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gds.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gds.dir/main.cpp.o -MF CMakeFiles/gds.dir/main.cpp.o.d -o CMakeFiles/gds.dir/main.cpp.o -c /home/dtseng/Downloads/research/etching_simulations/gds/main.cpp
 
-CMakeFiles/gds.dir/gds_to_ply.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gds.dir/gds_to_ply.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dtseng/Downloads/research/etching_simulations/gds_v2/gds_to_ply.cpp > CMakeFiles/gds.dir/gds_to_ply.cpp.i
+CMakeFiles/gds.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gds.dir/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dtseng/Downloads/research/etching_simulations/gds/main.cpp > CMakeFiles/gds.dir/main.cpp.i
 
-CMakeFiles/gds.dir/gds_to_ply.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gds.dir/gds_to_ply.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dtseng/Downloads/research/etching_simulations/gds_v2/gds_to_ply.cpp -o CMakeFiles/gds.dir/gds_to_ply.cpp.s
+CMakeFiles/gds.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gds.dir/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dtseng/Downloads/research/etching_simulations/gds/main.cpp -o CMakeFiles/gds.dir/main.cpp.s
+
+CMakeFiles/gds.dir/GDSProcessor.cpp.o: CMakeFiles/gds.dir/flags.make
+CMakeFiles/gds.dir/GDSProcessor.cpp.o: /home/dtseng/Downloads/research/etching_simulations/gds/GDSProcessor.cpp
+CMakeFiles/gds.dir/GDSProcessor.cpp.o: CMakeFiles/gds.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dtseng/Downloads/research/etching_simulations/gds/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gds.dir/GDSProcessor.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gds.dir/GDSProcessor.cpp.o -MF CMakeFiles/gds.dir/GDSProcessor.cpp.o.d -o CMakeFiles/gds.dir/GDSProcessor.cpp.o -c /home/dtseng/Downloads/research/etching_simulations/gds/GDSProcessor.cpp
+
+CMakeFiles/gds.dir/GDSProcessor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gds.dir/GDSProcessor.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dtseng/Downloads/research/etching_simulations/gds/GDSProcessor.cpp > CMakeFiles/gds.dir/GDSProcessor.cpp.i
+
+CMakeFiles/gds.dir/GDSProcessor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gds.dir/GDSProcessor.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dtseng/Downloads/research/etching_simulations/gds/GDSProcessor.cpp -o CMakeFiles/gds.dir/GDSProcessor.cpp.s
 
 # Object files for target gds
 gds_OBJECTS = \
-"CMakeFiles/gds.dir/gds_to_ply.cpp.o"
+"CMakeFiles/gds.dir/main.cpp.o" \
+"CMakeFiles/gds.dir/GDSProcessor.cpp.o"
 
 # External object files for target gds
 gds_EXTERNAL_OBJECTS =
 
-gds: CMakeFiles/gds.dir/gds_to_ply.cpp.o
+gds: CMakeFiles/gds.dir/main.cpp.o
+gds: CMakeFiles/gds.dir/GDSProcessor.cpp.o
 gds: CMakeFiles/gds.dir/build.make
 gds: CMakeFiles/gds.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dtseng/Downloads/research/etching_simulations/gds_v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable gds"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dtseng/Downloads/research/etching_simulations/gds/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable gds"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gds.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -105,6 +121,6 @@ CMakeFiles/gds.dir/clean:
 .PHONY : CMakeFiles/gds.dir/clean
 
 CMakeFiles/gds.dir/depend:
-	cd /home/dtseng/Downloads/research/etching_simulations/gds_v2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dtseng/Downloads/research/etching_simulations/gds_v2 /home/dtseng/Downloads/research/etching_simulations/gds_v2 /home/dtseng/Downloads/research/etching_simulations/gds_v2/build /home/dtseng/Downloads/research/etching_simulations/gds_v2/build /home/dtseng/Downloads/research/etching_simulations/gds_v2/build/CMakeFiles/gds.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/dtseng/Downloads/research/etching_simulations/gds/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dtseng/Downloads/research/etching_simulations/gds /home/dtseng/Downloads/research/etching_simulations/gds /home/dtseng/Downloads/research/etching_simulations/gds/build /home/dtseng/Downloads/research/etching_simulations/gds/build /home/dtseng/Downloads/research/etching_simulations/gds/build/CMakeFiles/gds.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/gds.dir/depend
 
